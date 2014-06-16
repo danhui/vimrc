@@ -1,3 +1,7 @@
+"No compatible, and temporarily turn off filetype
+set nocompatible
+filetype off
+
 "Syntax and colorscheme
 set t_Co=256
 colorscheme distinguished
@@ -46,7 +50,18 @@ set hlsearch
 "set showmatch
 
 "Pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
+"filetype plugin indent on
+
+"Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'sjl/gundo.vim'
+
+call vundle#end()
 filetype plugin indent on
 
 "Airline
