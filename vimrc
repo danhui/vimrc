@@ -59,8 +59,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
-Plugin 'sjl/gundo.vim'
 Plugin 'ervandew/supertab'
+if version >= 730
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'sjl/gundo.vim'
+endif
 
 call vundle#end()
 filetype plugin indent on
