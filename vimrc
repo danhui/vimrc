@@ -60,7 +60,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
-if version >= 730
+if v:version >= 703
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'sjl/gundo.vim'
 endif
@@ -72,5 +72,7 @@ filetype plugin indent on
 let g:airline_theme='murmur'
 let g:airline#extensions#whitespace#enabled = 0
 
-"Gundo
-nnoremap <F5> :GundoToggle<CR>
+if v:version >= 703
+    "Gundo
+    nnoremap <F5> :GundoToggle<CR>
+endif
