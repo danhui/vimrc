@@ -56,10 +56,11 @@ set hlsearch
 "Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'bling/vim-airline'
 Plugin 'sjl/gundo.vim'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 filetype plugin indent on
