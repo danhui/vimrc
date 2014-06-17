@@ -1,3 +1,8 @@
+"Runtime path for Windows only
+if has("win32") || has("win64")
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+end
+
 "No compatible, and temporarily turn off filetype
 set nocompatible
 filetype off
