@@ -74,6 +74,7 @@ call vundle#end()
 filetype plugin indent on
 
 "Airline
+set ttimeoutlen=50
 let g:airline_theme='murmur'
 let g:airline#extensions#whitespace#enabled = 0
 
