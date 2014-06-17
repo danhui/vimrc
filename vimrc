@@ -9,8 +9,8 @@ filetype off
 
 "Syntax and colorscheme
 set t_Co=256
-colorscheme distinguished
 syntax enable
+colorscheme distinguished
 
 "Show line number
 set number
@@ -77,7 +77,12 @@ filetype plugin indent on
 "Airline
 set ttimeoutlen=50
 let g:airline_theme='murmur'
+"Show whitespace
 let g:airline#extensions#whitespace#enabled = 0
+"Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+"Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>
@@ -88,3 +93,24 @@ if v:version >= 703
     "Gundo
     nnoremap <F5> :GundoToggle<CR>
 endif
+
+"Set <leader> from '\' to ' '
+let mapleader=" "
+
+"Buffers
+" To open a new empty buffer
+nmap <leader>t :enew<CR>
+" Move to the next buffer
+nmap <leader>j :bnext<CR>
+" Move to the previous buffer
+nmap <leader>k :bprevious<CR>
+" " Close the current buffer and move to the previous one
+nmap <leader>x :bp <BAR> bd #<CR>
+
+"Common shortcuts
+nmap <leader>w :w<CR>
+nmap <leader>wq :wq<CR>
+nmap <leader>q :q<CR>
+
+"Nerdtree
+nmap <leader>n :NERDTreeToggle<CR>
