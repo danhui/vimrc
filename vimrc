@@ -65,6 +65,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdtree'
 if v:version >= 703
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'sjl/gundo.vim'
@@ -77,6 +78,11 @@ filetype plugin indent on
 set ttimeoutlen=50
 let g:airline_theme='murmur'
 let g:airline#extensions#whitespace#enabled = 0
+
+"Nerdtree
+map <C-n> :NERDTreeToggle<CR>
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 if v:version >= 703
     "Gundo
