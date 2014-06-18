@@ -1,8 +1,3 @@
-"Runtime path for Windows only
-if has("win32") || has("win64")
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-end
-
 "No compatible, and temporarily turn off filetype
 set nocompatible
 filetype off
@@ -59,8 +54,27 @@ set hlsearch
 "filetype plugin indent on
 
 "Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"Runtime path
+let vundleStat=1
+if has("win32") || has("win64")
+	let vundle_readme=expand("~/vimfiles/bundle/Vundle.vim/README.md")
+	if !filereadable(vundle_readme)
+		silent !mkdir -p ~/vimfiles/bundle
+		silent !git clone https://github.com/gmarik/vundle ~/vimfiles/bundle/Vundle.vim
+		let vundleStat=0
+	endif
+	set rtp+=~/vimfiles/bundle/Vundle.vim/
+	call vundle#begin("~/vimfiles/bundle/")
+else
+	let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+	if !filereadable(vundle_readme)
+		silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
+        let vundleStat=0
+	endif
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin("~/.vim/bundle/")
+end
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
@@ -71,6 +85,9 @@ if v:version >= 703
     Plugin 'sjl/gundo.vim'
 endif
 
+if vundleStat == 0
+	:BundleInstall
+endif
 call vundle#end()
 filetype plugin indent on
 
