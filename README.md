@@ -1,7 +1,14 @@
-To install:  
+To install on Linux:  
 
     $ cd ~  
     $ git clone https://github.com/danhui/vimrc.git .vim  
     $ echo "runtime vimrc" > .vimrc  
-    $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
+    $ vim  
+
+
+To install on Windows:
+
+    $ cd %USERPROFILE%  
+    $ git clone https://github.com/danhui/vimrc.git vimfiles  
+    $ echo "runtime vimrc" > .vimrc  
     $ vim  
