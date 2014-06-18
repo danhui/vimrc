@@ -69,8 +69,8 @@ else
 	let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 	if !filereadable(vundle_readme)
 		silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
-        let vundleStat=0
+                silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
+                let vundleStat=0
 	endif
 	set rtp+=$HOME/.vim/bundle/Vundle.vim
 	call vundle#begin("$HOME/.vim/bundle/")
