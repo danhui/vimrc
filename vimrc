@@ -57,14 +57,14 @@ set hlsearch
 "Runtime path
 let vundleStat=1
 if has("win32") || has("win64")
-	let vundle_readme=expand("~/vimfiles/bundle/Vundle.vim/README.md")
-	if !filereadable(vundle_readme)
-		silent !mkdir -p ~/vimfiles/bundle
-		silent !git clone https://github.com/gmarik/vundle ~/vimfiles/bundle/Vundle.vim
+	if !filereadable($HOME."\\vimfiles\\bundle\\Vundle.vim\\README.md")
+		silent call system("cd %USERPROFILE%")
+		silent call system("mkdir %USERPROFILE%\\vimfiles\\bundle")
+		silent call system("git clone https://github.com/gmarik/vundle %USERPROFILE%\\vimfiles\\bundle\\Vundle.vim")
 		let vundleStat=0
 	endif
-	set rtp+=~/vimfiles/bundle/Vundle.vim/
-	call vundle#begin("~/vimfiles/bundle/")
+	set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+	call vundle#begin("$HOME/vimfiles/bundle/")
 else
 	let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 	if !filereadable(vundle_readme)
@@ -72,8 +72,8 @@ else
         silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
         let vundleStat=0
 	endif
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin("~/.vim/bundle/")
+	set rtp+=$HOME/.vim/bundle/Vundle.vim
+	call vundle#begin("$HOME/.vim/bundle/")
 end
 Plugin 'gmarik/Vundle.vim'
 
@@ -86,7 +86,7 @@ if v:version >= 703
 endif
 
 if vundleStat == 0
-	:BundleInstall
+	:PluginInstall
 endif
 call vundle#end()
 filetype plugin indent on
