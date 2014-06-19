@@ -19,8 +19,8 @@ To install on Windows:
     $ echo "runtime vimrc" > .vimrc
     $ vim +q
 
-A brief explaination of the instructions:
-1. Switch to the home directory
-2. Install from github
-3. Create .vimrc
-4. Run vim once to install all plugins and then quit
+A brief explaination of the instructions:  
+1. Switch to the home directory  
+2. Install from github  
+3. Create .vimrc  
+4. Run vim once to install all plugins and then quit  
