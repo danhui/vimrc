@@ -2,9 +2,6 @@
 set nocompatible
 filetype off
 
-"Set 256 colour mode
-set t_Co=256
-
 "Show line number
 set number
 
@@ -26,6 +23,7 @@ set softtabstop=4
 
 "Always show status
 set laststatus=2
+set cmdheight=2
 
 "Backspace behavior
 set backspace=2
@@ -72,15 +70,28 @@ else
     set rtp+=$HOME/.vim/bundle/Vundle.vim
     call vundle#begin("$HOME/.vim/bundle/")
 end
+"Required for Vundle use
 Plugin 'gmarik/Vundle.vim'
 
+"Sleek status line
 Plugin 'bling/vim-airline'
+"Code completion with <TAB>
 Plugin 'ervandew/supertab'
+"File explorer
 Plugin 'scrooloose/nerdtree'
+"Giant collection of colorschemes
 Plugin 'flazz/vim-colorschemes'
+"Start page
 Plugin 'mhinz/vim-startify'
+"Buffer handling
+Plugin 'mattdbridges/bufkill.vim'
+"Improved syntax highlighting
+Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
+"Plugin 'hdima/python-syntax'
 if v:version >= 703
+    "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
+    "Visual undo tree
     Plugin 'sjl/gundo.vim'
 endif
 
@@ -92,7 +103,6 @@ filetype plugin indent on
 
 "Airline
 set ttimeoutlen=50
-"let g:airline_theme='murmur'
 "Show whitespace
 let g:airline#extensions#whitespace#enabled = 0
 "Enable the list of buffers
@@ -106,6 +116,7 @@ map <C-n> :NERDTreeToggle<CR>
 "autocmd vimenter * if !argc() | NERDTree | endif
 "if just NERDTree left, quit
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeWinSize=20
 
 if v:version >= 703
     "<F5> for Gundo
@@ -116,13 +127,13 @@ endif
 let mapleader=" "
 
 "Buffers
-" To open a new empty buffer
+"To open a new empty buffer
 nmap <leader>t :enew<CR>
-" Move to the next buffer
+"Move to the next buffer
 nmap <leader>j :bnext<CR>
-" Move to the previous buffer
+"Move to the previous buffer
 nmap <leader>k :bprevious<CR>
-" " Close the current buffer and move to the previous one
+"Close the current buffer and move to the previous one
 nmap <leader>x :bp <BAR> bd #<CR>
 
 "Common shortcuts
@@ -135,22 +146,34 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 "Syntax and colorscheme
 syntax enable
+set t_Co=256
+"Conemu
 if !empty($CONEMUBUILD)
     set term=xterm
     set t_Co=256
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
-endif
-set background=dark
-let g:airline_theme='murmur'
-colorscheme distinguished
-
-" GUI Options
-if has('gui_running')
     set background=dark
-    colorscheme distinguished
-    set guifont=Lucida_Console:h10
     let g:airline_theme='murmur'
+    colorscheme Tomorrow-Night
+"GUI Options
+elseif has('gui_running')
+    set t_Co=256
+    set guifont=Lucida_Console:h10
+    set background=dark
+    let g:airline_theme='murmur'
+    colorscheme Tomorrow-Night
+"Windows commandline
+elseif has('win32') || has('win64')
+    "set t_Co=16
+    set background=dark
+    let g:airline_theme='murmur'
+    "colorscheme solarized
+else
+    set t_Co=256
+    set background=dark
+    let g:airline_theme='murmur'
+    colorscheme Tomorrow-Night
 endif
 
 "Show trailing whitespace
