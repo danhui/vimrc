@@ -31,7 +31,7 @@ set backspace=2
 "Use mouse
 set mouse=a
 
-"No sounds/error messages
+"No bells
 set noerrorbells
 set visualbell
 set t_vb=
@@ -84,7 +84,7 @@ Plugin 'flazz/vim-colorschemes'
 "Start page
 Plugin 'mhinz/vim-startify'
 "Buffer handling
-Plugin 'mattdbridges/bufkill.vim'
+"Plugin 'mattdbridges/bufkill.vim'
 "Improved syntax highlighting
 Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
@@ -102,6 +102,9 @@ if vundleStat == 0
 endif
 call vundle#end()
 filetype plugin indent on
+
+"Set <leader> from '\' to ' '
+let mapleader=" "
 
 "Airline
 set ttimeoutlen=50
@@ -121,20 +124,21 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDTreeWinSize=20
 
 if v:version >= 703
-    "<F5> for Gundo
-    nnoremap <F5> :GundoToggle<CR>
+    if has('python')
+        "Gundo
+        let g:gundo_width=20
+        nmap <leader>u :GundoToggle<CR>
+        "nnoremap <F5> :GundoToggle<CR>
+    endif
 endif
-
-"Set <leader> from '\' to ' '
-let mapleader=" "
 
 "Buffers
 "To open a new empty buffer
-nmap <leader>t :enew<CR>
+nmap <leader>t :enew!<CR>
 "Move to the next buffer
-nmap <leader>j :bnext<CR>
+nmap <leader>k :bnext!<CR>
 "Move to the previous buffer
-nmap <leader>k :bprevious<CR>
+nmap <leader>j :bprevious!<CR>
 "Close the current buffer and move to the previous one
 nmap <leader>x :bp <BAR> bd #<CR>
 
@@ -148,14 +152,22 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 "Startify
 nmap <leader>s :Startify<CR>
+nmap <leader>ts :enew! <BAR> Startify<CR>
 
 "Unite
 nmap <leader>uf :Unite file<CR>
 nmap <leader>ub :Unite buffer<CR>
 
+"Change directory to current file's
+nmap <leader>cd :cd %:p:h<CR>
+
+"Reload vimrc
+nmap <leader>rc :so $MYVIMRC<CR>
+
 "Syntax and colorscheme
 syntax enable
 set t_Co=256
+
 "Conemu
 if !empty($CONEMUBUILD)
     set term=xterm
@@ -165,6 +177,7 @@ if !empty($CONEMUBUILD)
     set background=dark
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
+
 "GUI Options
 elseif has('gui_running')
     set t_Co=256
@@ -172,12 +185,15 @@ elseif has('gui_running')
     set background=dark
     let g:airline_theme='murmur'
     colorscheme Tomorrow-Night
+
 "Windows commandline
 elseif has('win32') || has('win64')
     "set t_Co=16
     set background=dark
     let g:airline_theme='murmur'
     "colorscheme solarized
+
+"Probably Unix commandline
 else
     set t_Co=256
     set background=dark
