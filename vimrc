@@ -88,6 +88,8 @@ Plugin 'mattdbridges/bufkill.vim'
 "Improved syntax highlighting
 Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
+"Unite
+Plugin 'Shougo/unite.vim'
 if v:version >= 703
     "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
@@ -144,6 +146,13 @@ nmap <leader>q :q<CR>
 "Nerdtree
 nmap <leader>n :NERDTreeToggle<CR>
 
+"Startify
+nmap <leader>s :Startify<CR>
+
+"Unite
+nmap <leader>uf :Unite file<CR>
+nmap <leader>ub :Unite buffer<CR>
+
 "Syntax and colorscheme
 syntax enable
 set t_Co=256
@@ -154,7 +163,7 @@ if !empty($CONEMUBUILD)
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
     set background=dark
-    let g:airline_theme='murmur'
+    let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
 "GUI Options
 elseif has('gui_running')
