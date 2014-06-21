@@ -128,7 +128,7 @@ if v:version >= 703
         "Gundo
         let g:gundo_width=20
         nmap <leader>u :GundoToggle<CR>
-        "nnoremap <F5> :GundoToggle<CR>
+        nnoremap <F5> :GundoToggle<CR>
     endif
 endif
 
@@ -155,7 +155,7 @@ nmap <leader>s :Startify<CR>
 nmap <leader>ts :enew! <BAR> Startify<CR>
 
 "Unite
-nmap <leader>uf :Unite file<CR>
+nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
 
 "Change directory to current file's
