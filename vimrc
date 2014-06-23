@@ -103,8 +103,7 @@ endif
 call vundle#end()
 filetype plugin indent on
 
-"Set <leader> from '\' to ' '
-let mapleader=" "
+"Plugin Config
 
 "Airline
 set ttimeoutlen=50
@@ -116,21 +115,25 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 "Nerdtree
-map <C-n> :NERDTreeToggle<CR>
 "if just called as vim, start NERDTree as well
 "autocmd vimenter * if !argc() | NERDTree | endif
 "if just NERDTree left, quit
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinSize=20
 
+"Unite
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"call unite#filters#sorter_default#use(['sorter_rank'])
+
 if v:version >= 703
     if has('python')
         "Gundo
         let g:gundo_width=20
-        nmap <leader>u :GundoToggle<CR>
-        nnoremap <F5> :GundoToggle<CR>
     endif
 endif
+
+"Set <leader> from '\' to ' '
+let mapleader=" "
 
 "Buffers
 "To open a new empty buffer
@@ -148,6 +151,7 @@ nmap <leader>wq :wq<CR>
 nmap <leader>q :q<CR>
 
 "Nerdtree
+"map <C-n> :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 
 "Startify
@@ -157,6 +161,14 @@ nmap <leader>ts :enew! <BAR> Startify<CR>
 "Unite
 nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
+
+if v:version >= 703
+    if has('python')
+        "Gundo
+        nmap <leader>u :GundoToggle<CR>
+        nnoremap <F5> :GundoToggle<CR>
+    endif
+endif
 
 "Change directory to current file's
 nmap <leader>cd :cd %:p:h<CR>
