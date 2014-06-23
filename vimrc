@@ -139,14 +139,16 @@ endif
 let mapleader=" "
 
 "Buffers
-"To open a new empty buffer
 nmap <leader>t :enew!<CR>
-"Move to the next buffer
 nmap <leader>k :bnext!<CR>
-"Move to the previous buffer
 nmap <leader>j :bprevious!<CR>
-"Close the current buffer and move to the previous one
 nmap <leader>x :bp <BAR> bd #<CR>
+
+"Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "Common shortcuts
 nmap <leader>w :w<CR>
@@ -178,6 +180,12 @@ nmap <leader>cd :cd %:p:h<CR>
 
 "Reload vimrc
 nmap <leader>rc :so $MYVIMRC<CR>
+
+"Cancel the search
+nmap <leader>/ :nohl <BAR> let @/=""<CR>
+
+"Paste toggle
+set pastetoggle=<F10>
 
 "Syntax and colorscheme
 syntax enable
