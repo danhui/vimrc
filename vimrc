@@ -113,6 +113,9 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 "Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+"No > or <
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 "Nerdtree
 "if just called as vim, start NERDTree as well
