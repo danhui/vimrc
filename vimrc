@@ -135,6 +135,9 @@ if v:version >= 703
     endif
 endif
 
+"Refresh syntax from the start
+autocmd BufEnter * :syntax sync fromstart
+
 "Set <leader> from '\' to ' '
 let mapleader=" "
 
