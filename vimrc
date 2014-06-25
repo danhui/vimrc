@@ -189,6 +189,7 @@ nmap <leader>/ :nohl <BAR> let @/=""<CR>
 
 "Paste toggle
 set pastetoggle=<F10>
+nmap <leader>p :set invpaste<CR>
 
 "Syntax and colorscheme
 syntax enable
