@@ -228,5 +228,9 @@ else
     colorscheme Tomorrow-Night
 endif
 
+if exists('+colorcolumn')
+    set colorcolumn=80
+endif
+
 "Show trailing whitespace
 match Todo /\s\+$/
