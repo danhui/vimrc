@@ -174,6 +174,8 @@ nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
 
 if v:version >= 703
+    "Easymotion
+    map \ <Plug>(easymotion-prefix)
     if has('python')
         "Gundo
         nmap <leader>u :GundoToggle<CR>
