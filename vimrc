@@ -81,6 +81,8 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 "Giant collection of colorschemes
 Plugin 'flazz/vim-colorschemes'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-colorscheme-switcher'
 "Start page
 Plugin 'mhinz/vim-startify'
 "Buffer handling
