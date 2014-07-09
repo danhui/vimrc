@@ -173,6 +173,9 @@ nmap <leader>ts :enew! <BAR> Startify<CR>
 nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
 
+"Whitespace Toggle
+nmap <leader><leader> :ToggleWhitespace<CR>
+
 if v:version >= 703
     "Easymotion
     map \ <Plug>(easymotion-prefix)
@@ -238,4 +241,4 @@ if exists('+colorcolumn')
 endif
 
 "Show trailing whitespace
-match Todo /\s\+$/
+"match Todo /\s\+$/
