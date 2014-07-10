@@ -92,6 +92,7 @@ Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
 "Unite
 Plugin 'Shougo/unite.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 if v:version >= 703
     "Press w to go
