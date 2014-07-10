@@ -79,20 +79,21 @@ Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 "File explorer
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+"Buffer handling
+"Plugin 'mattdbridges/bufkill.vim'
+"Unite
+Plugin 'Shougo/unite.vim'
 "Giant collection of colorschemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-colorscheme-switcher'
 "Start page
 Plugin 'mhinz/vim-startify'
-"Buffer handling
-"Plugin 'mattdbridges/bufkill.vim'
 "Improved syntax highlighting
 Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
-"Unite
-Plugin 'Shougo/unite.vim'
-Plugin 'kien/ctrlp.vim'
+"Trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 if v:version >= 703
     "Press w to go
@@ -174,6 +175,9 @@ nmap <leader>ts :enew! <BAR> Startify<CR>
 nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
 
+"CtrlP
+nmap <leader>up :CtrlP<CR>
+
 "Whitespace Toggle
 nmap <leader><leader> :ToggleWhitespace<CR>
 
@@ -182,7 +186,7 @@ if v:version >= 703
     map \ <Plug>(easymotion-prefix)
     if has('python')
         "Gundo
-        nmap <leader>u :GundoToggle<CR>
+        "nmap <leader>u :GundoToggle<CR>
         nnoremap <F5> :GundoToggle<CR>
     endif
 endif
