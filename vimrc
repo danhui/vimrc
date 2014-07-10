@@ -142,6 +142,7 @@ endif
 
 "Refresh syntax from the start
 autocmd BufEnter * :syntax sync fromstart
+command Sync syntax sync fromstart
 
 "Set <leader> from '\' to ' '
 let mapleader=" "
