@@ -91,7 +91,8 @@ Plugin 'xolox/vim-colorscheme-switcher'
 "Start page
 Plugin 'mhinz/vim-startify'
 "Improved syntax highlighting
-Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
+Plugin 'sheerun/vim-polyglot'
+"Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
 "Trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
