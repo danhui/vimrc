@@ -242,7 +242,12 @@ else
     colorscheme Tomorrow-Night
 endif
 
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+"Files to ignore
+"Unix
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+"Windows
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
