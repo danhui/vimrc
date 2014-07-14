@@ -15,8 +15,6 @@ set smartcase
 "Spacing
 set smarttab
 set expandtab
-set ai
-set si
 set wrap
 set shiftwidth=4
 set softtabstop=4
@@ -143,7 +141,7 @@ endif
 
 "Refresh syntax from the start
 autocmd BufEnter * :syntax sync fromstart
-command Sync syntax sync fromstart
+command! Sync syntax sync fromstart
 
 "Set <leader> from '\' to ' '
 let mapleader=" "
@@ -225,7 +223,7 @@ elseif has('gui_running')
     set t_Co=256
     set guifont=Lucida_Console:h10
     set background=dark
-    let g:airline_theme='murmur'
+    let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
 
 "Windows commandline
