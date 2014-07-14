@@ -78,6 +78,7 @@ Plugin 'ervandew/supertab'
 "File explorer
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 "Buffer handling
 "Plugin 'mattdbridges/bufkill.vim'
 "Unite
@@ -128,6 +129,10 @@ let g:airline_right_sep=''
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinSize=20
 
+"CtrlP
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_syntax_highlight = 1
+
 "Unite
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 "call unite#filters#sorter_default#use(['sorter_rank'])
@@ -176,7 +181,8 @@ nmap <leader>uf :Unite file -start-insert<CR>
 nmap <leader>ub :Unite buffer<CR>
 
 "CtrlP
-nmap <leader>up :CtrlP<CR>
+nmap <leader>op :CtrlP<CR>
+nmap <Leader>of :CtrlPFunky<Cr>
 
 "Whitespace Toggle
 nmap <leader><leader> :ToggleWhitespace<CR>
