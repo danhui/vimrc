@@ -178,11 +178,12 @@ nmap <leader>ts :enew! <BAR> Startify<CR>
 
 "Unite
 nmap <leader>uf :Unite file -start-insert<CR>
-nmap <leader>ub :Unite buffer<CR>
+"nmap <leader>ub :Unite buffer<CR>
 
 "CtrlP
 nmap <leader>op :CtrlP<CR>
-nmap <Leader>of :CtrlPFunky<Cr>
+nmap <leader>of :CtrlPFunky<CR>
+nmap <leader>ob :CtrlPBuffer<CR>
 
 "Whitespace Toggle
 nmap <leader><leader> :ToggleWhitespace<CR>
