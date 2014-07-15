@@ -94,7 +94,9 @@ Plugin 'sheerun/vim-polyglot'
 "Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
 "Trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
+"Plugin 'ntpeters/vim-better-whitespace'
+"Shell in vim
+"Plugin 'rosenfeld/conque-term'
 if v:version >= 703
     "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
@@ -145,8 +147,12 @@ if v:version >= 703
 endif
 
 "Refresh syntax from the start
-autocmd BufEnter * :syntax sync fromstart
-command! Sync syntax sync fromstart
+autocmd BufEnter * syntax sync fromstart
+function! SyntaxRefresh()
+    syntax on
+    syntax sync fromstart
+endfunction
+command! Sync call SyntaxRefresh()
 
 "Set <leader> from '\' to ' '
 let mapleader=" "
@@ -212,7 +218,7 @@ set pastetoggle=<F10>
 nmap <leader>p :set invpaste<CR>
 
 "Syntax and colorscheme
-syntax enable
+syntax on
 set t_Co=256
 
 "Conemu
