@@ -42,6 +42,12 @@ set hlsearch
 "Show matching brackets
 "set showmatch
 
+"Files to ignore
+"Unix
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+"Windows
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
+
 "Pathogen
 "execute pathogen#infect()
 "filetype plugin indent on
@@ -97,6 +103,8 @@ Plugin 'sheerun/vim-polyglot'
 "Plugin 'ntpeters/vim-better-whitespace'
 "Shell in vim
 "Plugin 'rosenfeld/conque-term'
+"Indentation
+Plugin 'nathanaelkane/vim-indent-guides'
 if v:version >= 703
     "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
@@ -134,10 +142,19 @@ let g:NERDTreeWinSize=20
 "CtrlP
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "Unite
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 "call unite#filters#sorter_default#use(['sorter_rank'])
+
+"Indentation Rules
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 if v:version >= 703
     if has('python')
@@ -253,16 +270,3 @@ else
     let g:airline_theme='murmur'
     colorscheme Tomorrow-Night
 endif
-
-
-"Files to ignore
-"Unix
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-"Windows
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
