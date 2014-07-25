@@ -100,7 +100,7 @@ Plugin 'sheerun/vim-polyglot'
 "Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
 "Trailing whitespace
-"Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 "Shell in vim
 "Plugin 'rosenfeld/conque-term'
 "Indentation
