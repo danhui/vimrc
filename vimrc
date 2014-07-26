@@ -120,6 +120,9 @@ filetype plugin indent on
 
 "Plugin Config
 
+"Startify
+autocmd FileType startify setlocal buftype=
+
 "Airline
 set ttimeoutlen=50
 "Show whitespace
