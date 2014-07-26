@@ -121,6 +121,11 @@ filetype plugin indent on
 "Plugin Config
 
 "Startify
+let g:startify_skiplist = [
+                \ 'COMMIT_EDITMSG',
+                \ $VIMRUNTIME .'/doc',
+                \ 'bundle/.*/doc',
+                \ ]
 autocmd FileType startify setlocal buftype=
 
 "Airline
