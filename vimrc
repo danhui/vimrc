@@ -3,6 +3,9 @@ set nocompatible
 filetype off
 
 "Show line number
+if v:version >= 703
+    set relativenumber
+endif
 set number
 
 "Show cursor position
