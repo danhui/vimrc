@@ -215,9 +215,8 @@ nmap <leader>uf :Unite file -start-insert<CR>
 "nmap <leader>ub :Unite buffer<CR>
 
 "CtrlP
-nmap <leader>op :CtrlP<CR>
-nmap <leader>of :CtrlPFunky<CR>
-nmap <leader>ob :CtrlPBuffer<CR>
+nmap <C-F> :CtrlPFunky<CR>
+nmap <C-B> :CtrlPBuffer<CR>
 
 "Whitespace Toggle
 nmap <leader><leader> :ToggleWhitespace<CR>
