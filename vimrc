@@ -233,7 +233,7 @@ nmap <leader><leader> :ToggleWhitespace<CR>
 if v:version >= 703
     "Easymotion
     map \ <Plug>(easymotion-prefix)
-    nnoremap <F5> :UndotreeToggle<cr>
+    nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     if has('python')
         "Gundo
         "nmap <leader>u :GundoToggle<CR>
