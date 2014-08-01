@@ -85,7 +85,7 @@ Plugin 'bling/vim-airline'
 "Code completion with <TAB>
 Plugin 'ervandew/supertab'
 "File explorer
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 "Buffer handling
@@ -112,6 +112,7 @@ if v:version >= 703
     "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
     "Visual undo tree
+    Plugin 'mbbill/undotree'
     Plugin 'sjl/gundo.vim'
 endif
 
@@ -131,6 +132,9 @@ let g:startify_skiplist = [
                 \ ]
 autocmd FileType startify setlocal buftype=
 
+"Pane width (applies to drawers, e.g. Nerdtree, undo trees)
+let paneWidth = 25
+
 "Airline
 set ttimeoutlen=50
 "Show whitespace
@@ -147,8 +151,8 @@ let g:airline_right_sep=''
 "if just called as vim, start NERDTree as well
 "autocmd vimenter * if !argc() | NERDTree | endif
 "if just NERDTree left, quit
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeWinSize=20
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"let g:NERDTreeWinSize=paneWidth
 
 "CtrlP
 let g:ctrlp_extensions = ['funky']
@@ -172,9 +176,10 @@ let g:indent_guides_guide_size = 1
 let g:better_whitespace_filetypes_blacklist=['unite']
 
 if v:version >= 703
+    let g:undotree_SplitWidth = paneWidth
     if has('python')
         "Gundo
-        let g:gundo_width=20
+        let g:gundo_width=paneWidth
     endif
 endif
 
@@ -208,7 +213,7 @@ nmap <leader>q :q<CR>
 
 "Nerdtree
 "map <C-n> :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeToggle<CR>
+"nmap <leader>n :NERDTreeToggle<CR>
 
 "Startify
 nmap <leader>s :Startify<CR>
@@ -228,10 +233,11 @@ nmap <leader><leader> :ToggleWhitespace<CR>
 if v:version >= 703
     "Easymotion
     map \ <Plug>(easymotion-prefix)
+    nnoremap <F5> :UndotreeToggle<cr>
     if has('python')
         "Gundo
         "nmap <leader>u :GundoToggle<CR>
-        nnoremap <F5> :GundoToggle<CR>
+        "nnoremap <F5> :GundoToggle<CR>
     endif
 endif
 
