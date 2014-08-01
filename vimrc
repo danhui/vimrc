@@ -167,6 +167,10 @@ let g:ctrlp_custom_ignore = {
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
+
+"Whitespace
+let g:better_whitespace_filetypes_blacklist=['unite']
+
 if v:version >= 703
     if has('python')
         "Gundo
@@ -211,7 +215,7 @@ nmap <leader>s :Startify<CR>
 nmap <leader>ts :enew! <BAR> Startify<CR>
 
 "Unite
-nmap <leader>uf :Unite file -start-insert<CR>
+nmap <leader>uf :Unite file -start-insert -buffer-name=".unite"<CR>
 "nmap <leader>ub :Unite buffer<CR>
 
 "CtrlP
