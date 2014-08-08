@@ -84,6 +84,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 "Code completion with <TAB>
 Plugin 'ervandew/supertab'
+"Surround
+Plugin 'tpope/vim-surround'
 "File explorer
 "Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
