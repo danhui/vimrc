@@ -49,7 +49,7 @@ set hlsearch
 "Unix
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 "Windows
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 
 "Pathogen
 "execute pathogen#infect()
