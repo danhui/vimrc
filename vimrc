@@ -194,6 +194,7 @@ endfunction
 command! Sync call SyntaxRefresh()
 
 "Set <leader> from '\' to ' '
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 "Buffers
