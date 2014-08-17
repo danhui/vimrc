@@ -275,6 +275,7 @@ if !empty($CONEMUBUILD)
 elseif has('gui_running')
     set t_Co=256
     "set guifont=Lucida_Console:h10
+    set guifont=Consolas:h10
     set background=dark
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
