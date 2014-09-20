@@ -107,7 +107,7 @@ Plugin 'sheerun/vim-polyglot'
 "Trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 "Shell in vim
-"Plugin 'rosenfeld/conque-term'
+Plugin 'rosenfeld/conque-term'
 "Indentation
 Plugin 'nathanaelkane/vim-indent-guides'
 if v:version >= 703
@@ -155,6 +155,20 @@ let g:airline_right_sep=''
 "if just NERDTree left, quit
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "let g:NERDTreeWinSize=paneWidth
+
+"Conque
+let g:ConqueTerm_StartMessages = 0
+
+function OnConqueEnter(term)
+    DisableWhitespace
+endfunction
+
+function OnConqueLeave(term)
+    EnableWhitespace
+endfunction
+
+call conque_term#register_function('buffer_enter', 'OnConqueEnter')
+call conque_term#register_function('buffer_leave', 'OnConqueLeave')
 
 "CtrlP
 let g:ctrlp_extensions = ['funky']
