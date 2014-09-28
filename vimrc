@@ -159,11 +159,11 @@ let g:airline_right_sep=''
 "Conque
 let g:ConqueTerm_StartMessages = 0
 
-function OnConqueEnter(term)
+function! OnConqueEnter(term)
     DisableWhitespace
 endfunction
 
-function OnConqueLeave(term)
+function! OnConqueLeave(term)
     EnableWhitespace
 endfunction
 
@@ -227,6 +227,7 @@ nnoremap <C-H> <C-W><C-H>
 nmap <leader>w :w<CR>
 nmap <leader>wq :wq<CR>
 nmap <leader>q :q<CR>
+nmap <leader>e :e 
 
 "Nerdtree
 "map <C-n> :NERDTreeToggle<CR>
@@ -275,21 +276,21 @@ nmap <leader>p :set invpaste<CR>
 syntax on
 set t_Co=256
 
-"Conemu
-if !empty($CONEMUBUILD)
-    set term=xterm
+"GUI Options
+if has('gui_running')
     set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
+    "set guifont=Lucida_Console:h10
+    set guifont=Consolas:h10
     set background=dark
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
 
-"GUI Options
-elseif has('gui_running')
+"Conemu
+elseif !empty($CONEMUBUILD)
+    set term=xterm
     set t_Co=256
-    "set guifont=Lucida_Console:h10
-    set guifont=Consolas:h10
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
     set background=dark
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
