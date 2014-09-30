@@ -56,8 +56,9 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 "filetype plugin indent on
 
 "Vundle
-"Runtime path
+" Here we check if Vundle needs to be installed
 let vundleStat=1
+" Windows
 if has("win32") || has("win64")
     if !filereadable($HOME."\\vimfiles\\bundle\\Vundle.vim\\README.md")
         silent call system("cd %USERPROFILE%")
@@ -67,6 +68,7 @@ if has("win32") || has("win64")
     endif
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
     silent call vundle#begin("$HOME/vimfiles/bundle/")
+" Linux
 else
     let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
     if !filereadable(vundle_readme)
@@ -187,7 +189,6 @@ let g:ctrlp_custom_ignore = {
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-
 "Whitespace
 let g:better_whitespace_filetypes_blacklist=['unite']
 
@@ -234,11 +235,11 @@ nmap <leader>e :e
 "nmap <leader>n :NERDTreeToggle<CR>
 
 "Startify
-nmap <leader>s :Startify<CR>
-nmap <leader>ts :enew! <BAR> Startify<CR>
+"nmap <leader>s :Startify<CR>
+nmap <leader>t :enew! <BAR> Startify<CR>
 
 "Unite
-nmap <leader>uf :Unite file -start-insert -buffer-name=".unite"<CR>
+nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
 "nmap <leader>ub :Unite buffer<CR>
 
 "CtrlP
@@ -265,7 +266,7 @@ nmap <leader>cd :cd %:p:h<CR>
 "Reload vimrc
 nmap <leader>rc :so $MYVIMRC<CR>
 
-"Cancel the search
+"Clear the search
 nmap <leader>/ :nohl <BAR> let @/=""<CR>
 
 "Paste toggle
