@@ -84,34 +84,46 @@ Plugin 'gmarik/Vundle.vim'
 
 "Sleek status line
 Plugin 'bling/vim-airline'
+
 "Code completion with <TAB>
 Plugin 'ervandew/supertab'
+
 "Surround
 Plugin 'tpope/vim-surround'
+
 "File explorer
 "Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+
 "Buffer handling
 "Plugin 'mattdbridges/bufkill.vim'
+
 "Unite
 Plugin 'Shougo/unite.vim'
+
 "Giant collection of colorschemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-colorscheme-switcher'
+
 "Start page
 Plugin 'mhinz/vim-startify'
+
 "Improved syntax highlighting
 Plugin 'sheerun/vim-polyglot'
 "Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "Plugin 'hdima/python-syntax'
+
 "Trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
+
 "Shell in vim
 Plugin 'rosenfeld/conque-term'
+
 "Indentation
 Plugin 'nathanaelkane/vim-indent-guides'
+
 if v:version >= 703
     "Press w to go
     Plugin 'Lokaltog/vim-easymotion'
@@ -128,6 +140,9 @@ filetype plugin indent on
 
 "Plugin Config
 
+"Pane width (applies to drawers, e.g. Nerdtree, undo trees)
+let paneWidth = 25
+
 "Startify
 let g:startify_skiplist = [
                 \ 'COMMIT_EDITMSG',
@@ -135,9 +150,8 @@ let g:startify_skiplist = [
                 \ 'bundle/.*/doc',
                 \ ]
 autocmd FileType startify setlocal buftype=
-
-"Pane width (applies to drawers, e.g. Nerdtree, undo trees)
-let paneWidth = 25
+"nmap <leader>s :Startify<CR>
+nmap <leader>t :enew! <BAR> Startify<CR>
 
 "Airline
 set ttimeoutlen=50
@@ -157,6 +171,8 @@ let g:airline_right_sep=''
 "if just NERDTree left, quit
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "let g:NERDTreeWinSize=paneWidth
+"map <C-n> :NERDTreeToggle<CR>
+"nmap <leader>n :NERDTreeToggle<CR>
 
 "Conque
 let g:ConqueTerm_StartMessages = 0
@@ -180,10 +196,15 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+"nmap <C-P> :CtrlP<CR>
+nmap <C-F> :CtrlPFunky<CR>
+nmap <C-B> :CtrlPBuffer<CR>
 
 "Unite
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 "call unite#filters#sorter_default#use(['sorter_rank'])
+nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
+"nmap <leader>ub :Unite buffer<CR>
 
 "Indentation Rules
 let g:indent_guides_start_level = 2
@@ -191,11 +212,18 @@ let g:indent_guides_guide_size = 1
 
 "Whitespace
 let g:better_whitespace_filetypes_blacklist=['unite']
+nmap <leader><leader> :ToggleWhitespace<CR>
 
 if v:version >= 703
+    "Easymotion
+    map \ <Plug>(easymotion-prefix)
+    "UndoTree
+    nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     let g:undotree_SplitWidth = paneWidth
     if has('python')
         "Gundo
+        "nmap <leader>u :GundoToggle<CR>
+        "nnoremap <F5> :GundoToggle<CR>
         let g:gundo_width=paneWidth
     endif
 endif
@@ -228,37 +256,7 @@ nnoremap <C-H> <C-W><C-H>
 nmap <leader>w :w<CR>
 nmap <leader>wq :wq<CR>
 nmap <leader>q :q<CR>
-nmap <leader>e :e 
-
-"Nerdtree
-"map <C-n> :NERDTreeToggle<CR>
-"nmap <leader>n :NERDTreeToggle<CR>
-
-"Startify
-"nmap <leader>s :Startify<CR>
-nmap <leader>t :enew! <BAR> Startify<CR>
-
-"Unite
-nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
-"nmap <leader>ub :Unite buffer<CR>
-
-"CtrlP
-nmap <C-F> :CtrlPFunky<CR>
-nmap <C-B> :CtrlPBuffer<CR>
-
-"Whitespace Toggle
-nmap <leader><leader> :ToggleWhitespace<CR>
-
-if v:version >= 703
-    "Easymotion
-    map \ <Plug>(easymotion-prefix)
-    nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
-    if has('python')
-        "Gundo
-        "nmap <leader>u :GundoToggle<CR>
-        "nnoremap <F5> :GundoToggle<CR>
-    endif
-endif
+nmap <leader>e :e<SPACE>
 
 "Change directory to current file's
 nmap <leader>cd :cd %:p:h<CR>
