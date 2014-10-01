@@ -118,9 +118,6 @@ Plugin 'sheerun/vim-polyglot'
 "Trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
-"Shell in vim
-Plugin 'rosenfeld/conque-term'
-
 "Indentation
 Plugin 'nathanaelkane/vim-indent-guides'
 
@@ -129,7 +126,9 @@ if v:version >= 703
     Plugin 'Lokaltog/vim-easymotion'
     "Visual undo tree
     Plugin 'mbbill/undotree'
-    Plugin 'sjl/gundo.vim'
+    "Plugin 'sjl/gundo.vim'
+    "Shell in vim
+    Plugin 'rosenfeld/conque-term'
 endif
 
 if vundleStat == 0
@@ -178,20 +177,6 @@ let g:airline_right_sep=''
 "map <C-n> :NERDTreeToggle<CR>
 "nmap <leader>n :NERDTreeToggle<CR>
 
-"Conque
-let g:ConqueTerm_StartMessages = 0
-
-function! OnConqueEnter(term)
-    DisableWhitespace
-endfunction
-
-function! OnConqueLeave(term)
-    EnableWhitespace
-endfunction
-
-call conque_term#register_function('buffer_enter', 'OnConqueEnter')
-call conque_term#register_function('buffer_leave', 'OnConqueLeave')
-
 "CtrlP
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
@@ -225,10 +210,21 @@ if v:version >= 703
     nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     let g:undotree_SplitWidth = paneWidth
     if has('python')
+        "Conque
+        let g:ConqueTerm_StartMessages = 0
+        function! OnConqueEnter(term)
+            DisableWhitespace
+        endfunction
+        function! OnConqueLeave(term)
+            EnableWhitespace
+        endfunction
+        call conque_term#register_function('buffer_enter', 'OnConqueEnter')
+        call conque_term#register_function('buffer_leave', 'OnConqueLeave')
+        nmap <leader>cq :ConqueTermVSplit<SPACE>
         "Gundo
         "nmap <leader>u :GundoToggle<CR>
         "nnoremap <F5> :GundoToggle<CR>
-        let g:gundo_width=paneWidth
+        "let g:gundo_width=paneWidth
     endif
 endif
 
