@@ -209,6 +209,7 @@ if v:version >= 703
     "UndoTree
     nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     let g:undotree_SplitWidth = paneWidth
+    let g:undotree_SetFocusWhenToggle = 1
     if has('python')
         "Conque
         let g:ConqueTerm_StartMessages = 0
