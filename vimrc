@@ -140,6 +140,10 @@ filetype plugin indent on
 
 "Plugin Config
 
+"Set <leader> from '\' to ' '
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 "Pane width (applies to drawers, e.g. Nerdtree, undo trees)
 let paneWidth = 25
 
@@ -235,10 +239,6 @@ function! SyntaxRefresh()
     syntax sync fromstart
 endfunction
 command! Sync call SyntaxRefresh()
-
-"Set <leader> from '\' to ' '
-nnoremap <SPACE> <Nop>
-let mapleader=" "
 
 "Buffers
 nmap <leader>t :enew!<CR>
