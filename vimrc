@@ -1,3 +1,6 @@
+"========================================================================
+"Some general settings
+
 "No compatible, and temporarily turn off filetype
 set nocompatible
 filetype off
@@ -22,7 +25,7 @@ set wrap
 set shiftwidth=4
 set softtabstop=4
 
-"Always show status
+"Status bar
 set laststatus=2
 set cmdheight=2
 
@@ -51,14 +54,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 "Windows
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 
+"========================================================================
+"Plugin managers
+
 "Pathogen
 "execute pathogen#infect()
 "filetype plugin indent on
 
 "Vundle
-" Here we check if Vundle needs to be installed
+"Here we check if Vundle needs to be installed
 let vundleStat=1
-" Windows
+"Windows
 if has("win32") || has("win64")
     if !filereadable($HOME."\\vimfiles\\bundle\\Vundle.vim\\README.md")
         silent call system("cd %USERPROFILE%")
@@ -68,7 +74,7 @@ if has("win32") || has("win64")
     endif
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
     silent call vundle#begin("$HOME/vimfiles/bundle/")
-" Linux
+"Linux
 else
     let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
     if !filereadable(vundle_readme)
@@ -132,11 +138,12 @@ if v:version >= 703
 endif
 
 if vundleStat == 0
-	:PluginInstall
+    PluginInstall
 endif
 call vundle#end()
 filetype plugin indent on
 
+"========================================================================
 "Plugin Config
 
 "Set <leader> from '\' to ' '
@@ -206,6 +213,7 @@ nmap <leader><leader> :ToggleWhitespace<CR>
 if v:version >= 703
     "Easymotion
     map \ <Plug>(easymotion-prefix)
+
     "UndoTree
     nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     let g:undotree_SplitWidth = paneWidth
@@ -222,12 +230,16 @@ if v:version >= 703
         call conque_term#register_function('buffer_enter', 'OnConqueEnter')
         call conque_term#register_function('buffer_leave', 'OnConqueLeave')
         nmap <leader>cq :ConqueTermVSplit<SPACE>
+
         "Gundo
         "nmap <leader>u :GundoToggle<CR>
         "nnoremap <F5> :GundoToggle<CR>
         "let g:gundo_width=paneWidth
     endif
 endif
+
+"========================================================================
+"Other commands and shortcuts
 
 "Refresh syntax from the start
 autocmd BufEnter * syntax sync fromstart
@@ -268,7 +280,8 @@ nmap <leader>/ :nohl <BAR> let @/=""<CR>
 set pastetoggle=<F10>
 nmap <leader>p :set invpaste<CR>
 
-"Syntax and colorscheme
+"========================================================================
+"Syntax, fonts, themes, and colorscheme
 syntax on
 set t_Co=256
 
