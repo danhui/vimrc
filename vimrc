@@ -160,8 +160,9 @@ let g:startify_skiplist = [
                 \ 'bundle/.*/doc',
                 \ ]
 autocmd FileType startify setlocal buftype=
-"nmap <leader>s :Startify<CR>
-nmap <leader>t :enew! <BAR> Startify<CR>
+nmap <leader>s :Startify<CR>
+nmap <leader>t :enew!<CR>
+"nmap <leader>t :enew! <BAR> Startify<CR>
 
 "Airline
 set ttimeoutlen=50
@@ -288,8 +289,12 @@ set t_Co=256
 "GUI Options
 if has('gui_running')
     set t_Co=256
-    "set guifont=Lucida_Console:h10
-    set guifont=Consolas:h10
+    if has('win32') || has('win64')
+        "set guifont=Consolas:h10
+        set guifont=DejaVu_Sans_Mono:h10
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
     set background=dark
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
