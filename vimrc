@@ -161,8 +161,6 @@ let g:startify_skiplist = [
                 \ ]
 autocmd FileType startify setlocal buftype=
 nmap <leader>s :Startify<CR>
-nmap <leader>t :enew!<CR>
-"nmap <leader>t :enew! <BAR> Startify<CR>
 
 "Airline
 set ttimeoutlen=50
