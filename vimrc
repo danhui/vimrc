@@ -134,7 +134,7 @@ if v:version >= 703
     Plugin 'mbbill/undotree'
     "Plugin 'sjl/gundo.vim'
     "Shell in vim
-    Plugin 'rosenfeld/conque-term'
+    "Plugin 'rosenfeld/conque-term'
 endif
 
 if vundleStat == 0
@@ -219,16 +219,16 @@ if v:version >= 703
     let g:undotree_SetFocusWhenToggle = 1
     if has('python')
         "Conque
-        let g:ConqueTerm_StartMessages = 0
-        function! OnConqueEnter(term)
-            DisableWhitespace
-        endfunction
-        function! OnConqueLeave(term)
-            EnableWhitespace
-        endfunction
-        call conque_term#register_function('buffer_enter', 'OnConqueEnter')
-        call conque_term#register_function('buffer_leave', 'OnConqueLeave')
-        nmap <leader>cq :ConqueTermVSplit<SPACE>
+        "let g:ConqueTerm_StartMessages = 0
+        "function! OnConqueEnter(term)
+        "    DisableWhitespace
+        "endfunction
+        "function! OnConqueLeave(term)
+        "    EnableWhitespace
+        "endfunction
+        "call conque_term#register_function('buffer_enter', 'OnConqueEnter')
+        "call conque_term#register_function('buffer_leave', 'OnConqueLeave')
+        "nmap <leader>cq :ConqueTermVSplit<SPACE>
 
         "Gundo
         "nmap <leader>u :GundoToggle<CR>
