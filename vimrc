@@ -85,56 +85,72 @@ else
     set rtp+=$HOME/.vim/bundle/Vundle.vim
     call vundle#begin("$HOME/.vim/bundle/")
 end
+
+let g:pluginList = []
+
+function! AppendPlugin(plugin)
+    Plugin a:plugin
+    let tmp = split(a:plugin, '/')
+    let tmp = split(tmp[-1], '''')
+    call add(g:pluginList, tmp[0])
+endfunction
+
+command! -nargs=1 AddPlugin call AppendPlugin(<f-args>)
+
+function! HasPlugin(plugin)
+    return index(g:pluginList, a:plugin) > -1
+endfunction
+
 "Required for Vundle use
-Plugin 'gmarik/Vundle.vim'
+AddPlugin 'gmarik/Vundle.vim'
 
 "Sleek status line
-Plugin 'bling/vim-airline'
+AddPlugin 'bling/vim-airline'
 
 "Code completion with <TAB>
-Plugin 'ervandew/supertab'
+AddPlugin 'ervandew/supertab'
 
 "Surround
-Plugin 'tpope/vim-surround'
+AddPlugin 'tpope/vim-surround'
 
 "File explorer
-"Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
+"AddPlugin 'scrooloose/nerdtree'
+AddPlugin 'kien/ctrlp.vim'
+AddPlugin 'tacahiroy/ctrlp-funky'
 
 "Buffer handling
-"Plugin 'mattdbridges/bufkill.vim'
+"AddPlugin 'mattdbridges/bufkill.vim'
 
 "Unite
-Plugin 'Shougo/unite.vim'
+AddPlugin 'Shougo/unite.vim'
 
 "Giant collection of colorschemes
-Plugin 'flazz/vim-colorschemes'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-colorscheme-switcher'
+AddPlugin 'flazz/vim-colorschemes'
+AddPlugin 'xolox/vim-misc'
+AddPlugin 'xolox/vim-colorscheme-switcher'
 
 "Start page
-Plugin 'mhinz/vim-startify'
+AddPlugin 'mhinz/vim-startify'
 
 "Improved syntax highlighting
-Plugin 'sheerun/vim-polyglot'
-"Plugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
-"Plugin 'hdima/python-syntax'
+AddPlugin 'sheerun/vim-polyglot'
+"AddPlugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
+"AddPlugin 'hdima/python-syntax'
 
 "Trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
+AddPlugin 'ntpeters/vim-better-whitespace'
 
 "Indentation
-Plugin 'nathanaelkane/vim-indent-guides'
+AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
     "Press w to go
-    Plugin 'Lokaltog/vim-easymotion'
+    AddPlugin 'Lokaltog/vim-easymotion'
     "Visual undo tree
-    Plugin 'mbbill/undotree'
-    "Plugin 'sjl/gundo.vim'
+    AddPlugin 'mbbill/undotree'
+    "AddPlugin 'sjl/gundo.vim'
     "Shell in vim
-    "Plugin 'rosenfeld/conque-term'
+    "AddPlugin 'rosenfeld/conque-term'
 endif
 
 if vundleStat == 0
@@ -154,87 +170,106 @@ let mapleader=" "
 let paneWidth = 25
 
 "Startify
-let g:startify_skiplist = [
-                \ 'COMMIT_EDITMSG',
-                \ $VIMRUNTIME .'/doc',
-                \ 'bundle/.*/doc',
-                \ ]
-autocmd FileType startify setlocal buftype=
-nmap <leader>s :Startify<CR>
+if HasPlugin('vim-startify')
+    let g:startify_skiplist = [
+                    \ 'COMMIT_EDITMSG',
+                    \ $VIMRUNTIME .'/doc',
+                    \ 'bundle/.*/doc',
+                    \ ]
+    autocmd FileType startify setlocal buftype=
+    nmap <leader>s :Startify<CR>
+endif
 
 "Airline
-set ttimeoutlen=50
-"Show whitespace
-let g:airline#extensions#whitespace#enabled = 0
-"Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-"Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-"No > or <
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+if HasPlugin('vim-airline')
+    set ttimeoutlen=50
+    "Show whitespace
+    let g:airline#extensions#whitespace#enabled = 0
+    "Enable the list of buffers
+    let g:airline#extensions#tabline#enabled = 1
+    "Show just the filename
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    "No > or <
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+endif
 
 "Nerdtree
-"if just called as vim, start NERDTree as well
-"autocmd vimenter * if !argc() | NERDTree | endif
-"if just NERDTree left, quit
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"let g:NERDTreeWinSize=paneWidth
-"map <C-n> :NERDTreeToggle<CR>
-"nmap <leader>n :NERDTreeToggle<CR>
+if HasPlugin('nerdtree')
+    "if just called as vim, start NERDTree as well
+    autocmd vimenter * if !argc() | NERDTree | endif
+    "if just NERDTree left, quit
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    let g:NERDTreeWinSize=paneWidth
+    map <C-n> :NERDTreeToggle<CR>
+    nmap <leader>n :NERDTreeToggle<CR>
+endif
 
 "CtrlP
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-"nmap <C-P> :CtrlP<CR>
-nmap <C-F> :CtrlPFunky<CR>
-nmap <C-B> :CtrlPBuffer<CR>
+    if HasPlugin('ctrlp.vim')
+    let g:ctrlp_extensions = ['funky']
+    let g:ctrlp_funky_syntax_highlight = 1
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
+    "nmap <C-P> :CtrlP<CR>
+    nmap <C-F> :CtrlPFunky<CR>
+    nmap <C-B> :CtrlPBuffer<CR>
+endif
 
 "Unite
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"call unite#filters#sorter_default#use(['sorter_rank'])
-nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
-"nmap <leader>ub :Unite buffer<CR>
+if HasPlugin('unite.vim')
+    "call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    "call unite#filters#sorter_default#use(['sorter_rank'])
+    nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
+    "nmap <leader>ub :Unite buffer<CR>
+endif
 
 "Indentation Rules
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+if HasPlugin('vim-indent-guides')
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+endif
 
 "Whitespace
-let g:better_whitespace_filetypes_blacklist=['unite']
-nmap <leader><leader> :ToggleWhitespace<CR>
+if HasPlugin('vim-better-whitespace')
+    let g:better_whitespace_filetypes_blacklist=['unite']
+    nmap <leader><leader> :ToggleWhitespace<CR>
+endif
 
-if v:version >= 703
-    "Easymotion
+"Easymotion
+if HasPlugin('vim-easymotion')
     map \ <Plug>(easymotion-prefix)
+endif
 
-    "UndoTree
+"UndoTree
+if HasPlugin('undotree')
     nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
     let g:undotree_SplitWidth = paneWidth
     let g:undotree_SetFocusWhenToggle = 1
-    if has('python')
-        "Conque
-        "let g:ConqueTerm_StartMessages = 0
-        "function! OnConqueEnter(term)
-        "    DisableWhitespace
-        "endfunction
-        "function! OnConqueLeave(term)
-        "    EnableWhitespace
-        "endfunction
-        "call conque_term#register_function('buffer_enter', 'OnConqueEnter')
-        "call conque_term#register_function('buffer_leave', 'OnConqueLeave')
-        "nmap <leader>cq :ConqueTermVSplit<SPACE>
+endif
 
-        "Gundo
-        "nmap <leader>u :GundoToggle<CR>
-        "nnoremap <F5> :GundoToggle<CR>
-        "let g:gundo_width=paneWidth
-    endif
+"Conque
+if HasPlugin('conque-term')
+    let g:ConqueTerm_StartMessages = 0
+    function! OnConqueEnter(term)
+        DisableWhitespace
+    endfunction
+    function! OnConqueLeave(term)
+        EnableWhitespace
+    endfunction
+    call conque_term#register_function('buffer_enter', 'OnConqueEnter')
+    call conque_term#register_function('buffer_leave', 'OnConqueLeave')
+    nmap <leader>cq :ConqueTermVSplit<SPACE>
+endif
+
+"Gundo
+if HasPlugin('gundo.vim')
+    nmap <leader>u :GundoToggle<CR>
+    nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_width=paneWidth
 endif
 
 "========================================================================
