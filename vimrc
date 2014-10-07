@@ -148,9 +148,11 @@ if v:version >= 703
     AddPlugin 'Lokaltog/vim-easymotion'
     "Visual undo tree
     AddPlugin 'mbbill/undotree'
-    "AddPlugin 'sjl/gundo.vim'
-    "Shell in vim
-    "AddPlugin 'rosenfeld/conque-term'
+    if has('python')
+        "AddPlugin 'sjl/gundo.vim'
+        "Shell in vim
+        "AddPlugin 'rosenfeld/conque-term'
+    endif
 endif
 
 if vundleStat == 0
