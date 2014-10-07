@@ -351,6 +351,7 @@ elseif has('win32') || has('win64')
 
 "Probably Unix commandline
 else
+    set clipboard=exclude:.*
     set t_Co=256
     set background=dark
     let g:airline_theme='murmur'
