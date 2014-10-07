@@ -243,7 +243,13 @@ endif
 
 "Easymotion
 if HasPlugin('vim-easymotion')
+    " Disabled default mappings
+    let g:EasyMotion_do_mapping = 0
+    " Set easymotion key
     map \ <Plug>(easymotion-prefix)
+    nmap <leader>l <Plug>(easymotion-bd-w)
+    nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
+    nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
 endif
 
 "UndoTree
