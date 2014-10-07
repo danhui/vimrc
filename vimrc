@@ -328,7 +328,7 @@ if has('gui_running')
         "set guifont=Consolas:h10
         set guifont=DejaVu_Sans_Mono:h10
     else
-        set guifont=DejaVu\ Sans\ Mono\ 10
+        set guifont=DejaVu\ Sans\ Mono\ 11
     endif
     set background=dark
     let g:airline_theme='tomorrow'
