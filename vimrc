@@ -298,6 +298,7 @@ nmap <leader>j :bprevious!<CR>
 nmap <leader>x :bp <BAR> bd #<CR>
 
 "Split navigation
+nmap <leader>v :vsplit<CR><C-W><C-L>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
