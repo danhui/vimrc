@@ -337,42 +337,35 @@ nmap <leader>p :set invpaste<CR>
 "Syntax, fonts, themes, and colorscheme
 syntax on
 set t_Co=256
+set background=dark
+let g:airline_theme='tomorrow'
+colorscheme Tomorrow-Night
 
 "GUI Options
 if has('gui_running')
-    set t_Co=256
     if has('win32') || has('win64')
-        "set guifont=Consolas:h10
         set guifont=DejaVu_Sans_Mono:h10
     else
         set guifont=DejaVu\ Sans\ Mono\ 11
     endif
-    set background=dark
-    let g:airline_theme='tomorrow'
-    colorscheme Tomorrow-Night
 
 "Conemu
 elseif !empty($CONEMUBUILD)
     set term=xterm
-    set t_Co=256
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
-    set background=dark
+    "weird behaviour with Conemu
+    set t_Co=256
     let g:airline_theme='tomorrow'
     colorscheme Tomorrow-Night
 
 "Windows commandline
 elseif has('win32') || has('win64')
-    "set t_Co=16
-    set background=dark
     let g:airline_theme='murmur'
-    "colorscheme solarized
+    colorscheme default
 
 "Probably Unix commandline
 else
+    "this prevents a huge lag in start time
     set clipboard=exclude:.*
-    set t_Co=256
-    set background=dark
-    let g:airline_theme='murmur'
-    colorscheme Tomorrow-Night
 endif
