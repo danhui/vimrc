@@ -227,7 +227,8 @@ endif
 if HasPlugin('unite.vim')
     "call unite#filters#matcher_default#use(['matcher_fuzzy'])
     "call unite#filters#sorter_default#use(['sorter_rank'])
-    nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
+    nmap <leader>uf :Unite file -start-insert<CR>
+    "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
     "nmap <leader>ub :Unite buffer<CR>
 endif
 
@@ -286,6 +287,7 @@ endif
 "Other commands and shortcuts
 
 "Refresh syntax from the start
+autocmd BufReadPost *.cc setf cpp
 autocmd BufEnter * syntax sync fromstart
 function! SyntaxRefresh()
     syntax on
