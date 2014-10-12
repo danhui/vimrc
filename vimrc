@@ -211,7 +211,7 @@ if HasPlugin('nerdtree')
 endif
 
 "CtrlP
-    if HasPlugin('ctrlp.vim')
+if HasPlugin('ctrlp.vim')
     let g:ctrlp_extensions = ['funky']
     let g:ctrlp_funky_syntax_highlight = 1
     let g:ctrlp_custom_ignore = {
@@ -220,8 +220,10 @@ endif
       \ 'link': 'some_bad_symbolic_links',
       \ }
     "nmap <C-P> :CtrlP<CR>
-    nmap <C-F> :CtrlPFunky<CR>
     nmap <C-B> :CtrlPBuffer<CR>
+    if HasPlugin('ctrlp-funky')
+        nmap <C-F> :CtrlPFunky<CR>
+    endif
 endif
 
 "Unite
@@ -231,7 +233,9 @@ if HasPlugin('unite.vim')
     nmap <leader>uf :Unite file -start-insert<CR>
     "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
     nmap <leader>ub :Unite buffer<CR>
-    nmap <leader>uc :Unite colorscheme -start-insert<CR>
+    if HasPlugin('unite-colorscheme')
+        nmap <leader>uc :Unite colorscheme -start-insert<CR>
+    endif
 endif
 
 "Indentation Rules
