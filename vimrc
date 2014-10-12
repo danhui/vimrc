@@ -123,11 +123,12 @@ AddPlugin 'tacahiroy/ctrlp-funky'
 
 "Unite
 AddPlugin 'Shougo/unite.vim'
+AddPlugin 'ujihisa/unite-colorscheme'
 
 "Giant collection of colorschemes
 AddPlugin 'flazz/vim-colorschemes'
-AddPlugin 'xolox/vim-misc'
-AddPlugin 'xolox/vim-colorscheme-switcher'
+"AddPlugin 'xolox/vim-misc'
+"AddPlugin 'xolox/vim-colorscheme-switcher'
 AddPlugin 'whatyouhide/vim-gotham'
 AddPlugin 'tomasr/molokai'
 
@@ -229,7 +230,8 @@ if HasPlugin('unite.vim')
     "call unite#filters#sorter_default#use(['sorter_rank'])
     nmap <leader>uf :Unite file -start-insert<CR>
     "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
-    "nmap <leader>ub :Unite buffer<CR>
+    nmap <leader>ub :Unite buffer<CR>
+    nmap <leader>uc :Unite colorscheme -start-insert<CR>
 endif
 
 "Indentation Rules
