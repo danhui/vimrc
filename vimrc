@@ -128,6 +128,8 @@ AddPlugin 'Shougo/unite.vim'
 AddPlugin 'flazz/vim-colorschemes'
 AddPlugin 'xolox/vim-misc'
 AddPlugin 'xolox/vim-colorscheme-switcher'
+AddPlugin 'whatyouhide/vim-gotham'
+AddPlugin 'tomasr/molokai'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
