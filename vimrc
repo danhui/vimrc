@@ -230,7 +230,7 @@ endif
 
 "Unite
 if HasPlugin('unite.vim')
-    "call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
     "call unite#filters#sorter_default#use(['sorter_rank'])
     nmap <leader>uf :Unite file -start-insert<CR>
     "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
