@@ -131,6 +131,7 @@ AddPlugin 'flazz/vim-colorschemes'
 "AddPlugin 'xolox/vim-colorscheme-switcher'
 AddPlugin 'whatyouhide/vim-gotham'
 AddPlugin 'tomasr/molokai'
+AddPlugin 'altercation/vim-colors-solarized'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
@@ -317,6 +318,7 @@ nnoremap <C-H> <C-W><C-H>
 "Common shortcuts
 nmap <leader>w :w<CR>
 nmap <leader>wq :wq<CR>
+nmap <leader>qq :qa<CR>
 nmap <leader>q :q<CR>
 nmap <leader>e :e<SPACE>
 
