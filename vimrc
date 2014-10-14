@@ -55,11 +55,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 
 "========================================================================
-"Plugin managers
-
-"Pathogen
-"execute pathogen#infect()
-"filetype plugin indent on
+"Plugins
 
 "Vundle
 "Here we check if Vundle needs to be installed
@@ -133,6 +129,8 @@ AddPlugin 'whatyouhide/vim-gotham'
 AddPlugin 'tomasr/molokai'
 AddPlugin 'chriskempson/base16-vim'
 AddPlugin 'altercation/vim-colors-solarized'
+AddPlugin 'Lokaltog/vim-distinguished'
+AddPlugin 'vim-scripts/xoria256.vim'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
