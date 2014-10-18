@@ -103,23 +103,24 @@ AddPlugin 'gmarik/Vundle.vim'
 "Sleek status line
 AddPlugin 'bling/vim-airline'
 
+"Unite
+AddPlugin 'Shougo/unite.vim'
+AddPlugin 'ujihisa/unite-colorscheme'
+
+"File explorer
+"AddPlugin 'scrooloose/nerdtree'
+AddPlugin 'Shougo/vimfiler.vim'
+AddPlugin 'kien/ctrlp.vim'
+AddPlugin 'tacahiroy/ctrlp-funky'
+
 "Code completion with <TAB>
 AddPlugin 'ervandew/supertab'
 
 "Surround
 AddPlugin 'tpope/vim-surround'
 
-"File explorer
-"AddPlugin 'scrooloose/nerdtree'
-AddPlugin 'kien/ctrlp.vim'
-AddPlugin 'tacahiroy/ctrlp-funky'
-
 "Buffer handling
 "AddPlugin 'mattdbridges/bufkill.vim'
-
-"Unite
-AddPlugin 'Shougo/unite.vim'
-AddPlugin 'ujihisa/unite-colorscheme'
 
 "Giant collection of colorschemes
 AddPlugin 'flazz/vim-colorschemes'
@@ -235,6 +236,9 @@ if HasPlugin('unite.vim')
     nmap <leader>ub :Unite buffer<CR>
     if HasPlugin('unite-colorscheme')
         nmap <leader>uc :Unite colorscheme -start-insert<CR>
+    endif
+    if HasPlugin('vimfiler.vim')
+        let g:vimfiler_as_default_explorer = 1
     endif
 endif
 
