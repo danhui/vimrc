@@ -220,6 +220,7 @@ if HasPlugin('ctrlp.vim')
       \ 'file': '\v\.(exe|so|dll)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
+    let g:ctrlp_open_multiple_files = 'ri'
     "nmap <C-P> :CtrlP<CR>
     nmap <C-B> :CtrlPBuffer<CR>
     if HasPlugin('ctrlp-funky')
