@@ -110,7 +110,8 @@ AddPlugin 'ujihisa/unite-colorscheme'
 "File explorer
 "AddPlugin 'scrooloose/nerdtree'
 AddPlugin 'Shougo/vimfiler.vim'
-AddPlugin 'kien/ctrlp.vim'
+"AddPlugin 'kien/ctrlp.vim'
+AddPlugin 'ctrlpvim/ctrlp.vim'
 AddPlugin 'tacahiroy/ctrlp-funky'
 
 "Code completion with <TAB>
@@ -135,6 +136,7 @@ AddPlugin 'vim-scripts/xoria256.vim'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
+AddPlugin 'wesQ3/vim-windowswap'
 
 "Improved syntax highlighting
 AddPlugin 'sheerun/vim-polyglot'
@@ -234,7 +236,7 @@ if HasPlugin('unite.vim')
     "call unite#filters#sorter_default#use(['sorter_rank'])
     nmap <leader>uf :Unite file -start-insert<CR>
     "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
-    nmap <leader>ub :Unite buffer<CR>
+    nmap <leader>ub :Unite buffer -start-insert<CR>
     if HasPlugin('unite-colorscheme')
         nmap <leader>uc :Unite colorscheme -start-insert<CR>
     endif
