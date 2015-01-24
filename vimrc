@@ -58,23 +58,17 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 "Plugins
 
 "Vundle
-"Here we check if Vundle needs to be installed
+"Check if Vundle needs to be installed
 let vundleStat=1
-"Windows
 if has("win32") || has("win64")
-    if !filereadable($HOME."\\vimfiles\\bundle\\Vundle.vim\\README.md")
-        silent call system("cd %USERPROFILE%")
-	silent call system("mkdir %USERPROFILE%\\vimfiles\\bundle")
+    if !isdirectory(expand($HOME."\\vimfiles\\bundle\\Vundle.vim"))
 	silent call system("git clone https://github.com/gmarik/vundle %USERPROFILE%\\vimfiles\\bundle\\Vundle.vim")
 	let vundleStat=0
     endif
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
     silent call vundle#begin("$HOME/vimfiles/bundle/")
-"Linux
 else
-    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-    if !filereadable(vundle_readme)
-        silent !mkdir -p ~/.vim/bundle
+    if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
         silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
         let vundleStat=0
     endif
@@ -100,7 +94,7 @@ endfunction
 "Required for Vundle use
 AddPlugin 'gmarik/Vundle.vim'
 
-"Sleek status line
+"Status line
 AddPlugin 'bling/vim-airline'
 
 "Unite
@@ -122,6 +116,7 @@ AddPlugin 'tpope/vim-surround'
 
 "Buffer handling
 "AddPlugin 'mattdbridges/bufkill.vim'
+AddPlugin 'wesQ3/vim-windowswap'
 
 "Giant collection of colorschemes
 AddPlugin 'flazz/vim-colorschemes'
@@ -136,7 +131,6 @@ AddPlugin 'vim-scripts/xoria256.vim'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
-AddPlugin 'wesQ3/vim-windowswap'
 
 "Improved syntax highlighting
 AddPlugin 'sheerun/vim-polyglot'
@@ -150,7 +144,6 @@ AddPlugin 'ntpeters/vim-better-whitespace'
 AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
-    "Press w to go
     AddPlugin 'Lokaltog/vim-easymotion'
     "Visual undo tree
     AddPlugin 'mbbill/undotree'
