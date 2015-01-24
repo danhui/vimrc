@@ -61,18 +61,18 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 "Check if Vundle needs to be installed
 let vundleStat=1
 if has("win32") || has("win64")
-    if !isdirectory(expand($HOME."\\vimfiles\\bundle\\Vundle.vim"))
-	silent call system("git clone https://github.com/gmarik/vundle %USERPROFILE%\\vimfiles\\bundle\\Vundle.vim")
+    if !isdirectory(expand($HOME."\\vimfiles\\bundle\\vundle"))
+	silent call system("git clone https://github.com/gmarik/vundle %USERPROFILE%\\vimfiles\\bundle\\vundle")
 	let vundleStat=0
     endif
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+    set rtp+=$HOME/vimfiles/bundle/vundle/
     silent call vundle#begin("$HOME/vimfiles/bundle/")
 else
-    if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/Vundle.vim
+    if !isdirectory(expand("~/.vim/bundle/vundle"))
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
         let vundleStat=0
     endif
-    set rtp+=$HOME/.vim/bundle/Vundle.vim
+    set rtp+=$HOME/.vim/bundle/vundle/
     call vundle#begin("$HOME/.vim/bundle/")
 end
 
