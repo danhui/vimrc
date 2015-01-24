@@ -92,7 +92,7 @@ function! HasPlugin(plugin)
 endfunction
 
 "Required for Vundle use
-AddPlugin 'gmarik/Vundle.vim'
+AddPlugin 'gmarik/vundle'
 
 "Status line
 AddPlugin 'bling/vim-airline'
