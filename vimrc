@@ -14,6 +14,11 @@ set number
 "Show cursor position
 set cursorline
 
+"Colorcolumn
+if exists('+colorcolumn')
+    set colorcolumn=80
+endif
+
 "Casing
 set ignorecase
 set smartcase
@@ -22,8 +27,8 @@ set smartcase
 set smarttab
 set expandtab
 set wrap
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 "Status bar
 set laststatus=2
@@ -53,6 +58,16 @@ set hlsearch
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 "Windows
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
+
+"Persistant history
+set undofile
+set undolevels=1000
+set undoreload=10000
+if has("win32") || has("win64")
+    set undodir=$HOME/vimfiles/undo
+else
+    set undodir=~/.vim/undo
+endif
 
 "========================================================================
 "Plugins
