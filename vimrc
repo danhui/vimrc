@@ -64,8 +64,14 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 if has("win32") || has("win64")
+    if !isdirectory(expand($HOME."\\vimfiles\\undo"))
+        silent call system("mkdir ".$HOME."\\vimfiles\\undo")
+    end
     set undodir=$HOME/vimfiles/undo
 else
+    if !isdirectory(expand("~/.vim/undo"))
+        silent call system("mkdir ~/.vim/undo")
+    end
     set undodir=~/.vim/undo
 endif
 
