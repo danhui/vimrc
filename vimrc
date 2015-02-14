@@ -275,6 +275,7 @@ endif
 if HasPlugin('vim-easymotion')
     " Disabled default mappings
     let g:EasyMotion_do_mapping = 0
+    let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
     " Set easymotion key
     map \ <Plug>(easymotion-prefix)
     nmap <leader>l <Plug>(easymotion-bd-w)
