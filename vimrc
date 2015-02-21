@@ -7,7 +7,7 @@ filetype off
 
 "Show line number
 if v:version >= 703
-    set relativenumber
+  set relativenumber
 endif
 set number
 
@@ -16,7 +16,7 @@ set cursorline
 
 "Colorcolumn
 if exists('+colorcolumn')
-    set colorcolumn=80
+  set colorcolumn=80
 endif
 
 "Casing
@@ -26,9 +26,11 @@ set smartcase
 "Spacing
 set smarttab
 set expandtab
-set wrap
 set shiftwidth=2
 set tabstop=2
+
+"Line wrapping
+set nowrap
 
 "Status bar
 set laststatus=2
@@ -65,7 +67,7 @@ set undolevels=1000
 set undoreload=10000
 if has("win32") || has("win64")
   if !isdirectory(expand($HOME."\\vimfiles\\undo"))
-      silent call system("mkdir ".$HOME."\\vimfiles\\undo")
+    silent call system("mkdir ".$HOME."\\vimfiles\\undo")
   end
   set undodir=$HOME/vimfiles/undo
 else
@@ -78,7 +80,6 @@ endif
 "========================================================================
 "Plugins
 
-"Vundle
 "Check if Vundle needs to be installed
 let vundleStat=1
 if has("win32") || has("win64")
@@ -97,6 +98,8 @@ else
   call vundle#begin("$HOME/.vim/bundle/")
 end
 
+"AddPlugin allows for easy switching between plugin managers
+"HasPlugin only loads plugin settings if the plugin was actually loaded
 let g:pluginList = []
 
 function! AppendPlugin(plugin)
@@ -118,37 +121,47 @@ AddPlugin 'gmarik/vundle'
 "Status line
 AddPlugin 'bling/vim-airline'
 
-"Unite
+"Unite, a powerful set of tools
 AddPlugin 'Shougo/unite.vim'
-AddPlugin 'ujihisa/unite-colorscheme'
+if HasPlugin("unite.vim")
+  AddPlugin 'ujihisa/unite-colorscheme'
+  AddPlugin 'Shougo/vimfiler.vim'
+endif
 
-"File explorer
+"File explorer sidebar
 "AddPlugin 'scrooloose/nerdtree'
-AddPlugin 'Shougo/vimfiler.vim'
-"AddPlugin 'kien/ctrlp.vim'
+
+"CtrlP, another nice set of tools
 AddPlugin 'ctrlpvim/ctrlp.vim'
-AddPlugin 'tacahiroy/ctrlp-funky'
+if HasPlugin("ctrlp.vim")
+  "Search by function name in file
+  AddPlugin 'tacahiroy/ctrlp-funky'
+endif
 
 "Code completion with <TAB>
 AddPlugin 'ervandew/supertab'
 
-"Surround
+"Surround, makes {a,b,c} -> [a,b,c] easy
 AddPlugin 'tpope/vim-surround'
 
 "Buffer handling
 "AddPlugin 'mattdbridges/bufkill.vim'
+
+"Switch buffers in the split layout
 AddPlugin 'wesQ3/vim-windowswap'
 
 "Giant collection of colorschemes
 AddPlugin 'flazz/vim-colorschemes'
-"AddPlugin 'xolox/vim-misc'
-"AddPlugin 'xolox/vim-colorscheme-switcher'
 AddPlugin 'whatyouhide/vim-gotham'
 AddPlugin 'tomasr/molokai'
 AddPlugin 'chriskempson/base16-vim'
 AddPlugin 'altercation/vim-colors-solarized'
 AddPlugin 'Lokaltog/vim-distinguished'
 AddPlugin 'vim-scripts/xoria256.vim'
+
+"Colorscheme chooser
+"AddPlugin 'xolox/vim-misc'
+"AddPlugin 'xolox/vim-colorscheme-switcher'
 
 "Start page
 AddPlugin 'mhinz/vim-startify'
@@ -158,10 +171,10 @@ AddPlugin 'sheerun/vim-polyglot'
 "AddPlugin 'd3vas3m/Improved-Syntax-Highlighting-Vim'
 "AddPlugin 'hdima/python-syntax'
 
-"Trailing whitespace
+"Show trailing whitespace
 AddPlugin 'ntpeters/vim-better-whitespace'
 
-"Indentation
+"Indentation marking
 AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
@@ -249,7 +262,6 @@ if HasPlugin('unite.vim')
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   "call unite#filters#sorter_default#use(['sorter_rank'])
   nmap <leader>uf :Unite file -start-insert<CR>
-  "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
   nmap <leader>ub :Unite buffer -start-insert<CR>
   if HasPlugin('unite-colorscheme')
     nmap <leader>uc :Unite colorscheme -start-insert<CR>
@@ -261,7 +273,7 @@ endif
 
 "Indentation Rules
 if HasPlugin('vim-indent-guides')
-  let g:indent_guides_start_level = 2
+  let g:indent_guides_start_level = 1
   let g:indent_guides_guide_size = 1
 endif
 
@@ -285,9 +297,15 @@ endif
 
 "UndoTree
 if HasPlugin('undotree')
+  nnoremap <leader>u :UndotreeToggle<CR>:AirlineRefresh<CR>
   nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
   let g:undotree_SplitWidth = paneWidth
   let g:undotree_SetFocusWhenToggle = 1
+"Gundo
+elseif HasPlugin('gundo.vim')
+  nmap <leader>u :GundoToggle<CR>
+  nnoremap <F5> :GundoToggle<CR>
+  let g:gundo_width=paneWidth
 endif
 
 "Conque
@@ -302,13 +320,6 @@ if HasPlugin('conque-term')
   call conque_term#register_function('buffer_enter', 'OnConqueEnter')
   call conque_term#register_function('buffer_leave', 'OnConqueLeave')
   nmap <leader>cq :ConqueTermVSplit<SPACE>
-endif
-
-"Gundo
-if HasPlugin('gundo.vim')
-  nmap <leader>u :GundoToggle<CR>
-  nnoremap <F5> :GundoToggle<CR>
-  let g:gundo_width=paneWidth
 endif
 
 "========================================================================
@@ -369,7 +380,7 @@ if has('gui_running')
   if has('win32') || has('win64')
     set guifont=DejaVu_Sans_Mono:h10
   else
-    set guifont=DejaVu\ Sans\ Mono\ 11
+    set guifont=DejaVu\ Sans\ Mono\ 10
   endif
 
 "Conemu
@@ -389,6 +400,6 @@ elseif has('win32') || has('win64')
 
 "Probably Unix commandline
 else
-  "this prevents a huge lag in start time
+  "This prevents a huge lag in start time
   set clipboard=exclude:.*
 endif
