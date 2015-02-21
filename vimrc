@@ -28,7 +28,7 @@ set smarttab
 set expandtab
 set wrap
 set shiftwidth=2
-set softtabstop=2
+set tabstop=2
 
 "Status bar
 set laststatus=2
@@ -64,15 +64,15 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 if has("win32") || has("win64")
-    if !isdirectory(expand($HOME."\\vimfiles\\undo"))
-        silent call system("mkdir ".$HOME."\\vimfiles\\undo")
-    end
-    set undodir=$HOME/vimfiles/undo
+  if !isdirectory(expand($HOME."\\vimfiles\\undo"))
+      silent call system("mkdir ".$HOME."\\vimfiles\\undo")
+  end
+  set undodir=$HOME/vimfiles/undo
 else
-    if !isdirectory(expand("~/.vim/undo"))
-        silent call system("mkdir ~/.vim/undo")
-    end
-    set undodir=~/.vim/undo
+  if !isdirectory(expand("~/.vim/undo"))
+    silent call system("mkdir ~/.vim/undo")
+  end
+  set undodir=~/.vim/undo
 endif
 
 "========================================================================
@@ -82,34 +82,34 @@ endif
 "Check if Vundle needs to be installed
 let vundleStat=1
 if has("win32") || has("win64")
-    if !isdirectory(expand($HOME."\\vimfiles\\bundle\\vundle"))
-	silent call system("git clone https://github.com/gmarik/vundle ".$HOME."\\vimfiles\\bundle\\vundle")
-	let vundleStat=0
-    endif
-    set rtp+=$HOME/vimfiles/bundle/vundle/
-    silent call vundle#begin("$HOME/vimfiles/bundle/")
+  if !isdirectory(expand($HOME."\\vimfiles\\bundle\\vundle"))
+    silent call system("git clone https://github.com/gmarik/vundle ".$HOME."\\vimfiles\\bundle\\vundle")
+    let vundleStat=0
+  endif
+  set rtp+=$HOME/vimfiles/bundle/vundle/
+  silent call vundle#begin("$HOME/vimfiles/bundle/")
 else
-    if !isdirectory(expand("~/.vim/bundle/vundle"))
-        silent call system("!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle")
-        let vundleStat=0
-    endif
-    set rtp+=$HOME/.vim/bundle/vundle/
-    call vundle#begin("$HOME/.vim/bundle/")
+  if !isdirectory(expand("~/.vim/bundle/vundle"))
+    silent call system("!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle")
+    let vundleStat=0
+  endif
+  set rtp+=$HOME/.vim/bundle/vundle/
+  call vundle#begin("$HOME/.vim/bundle/")
 end
 
 let g:pluginList = []
 
 function! AppendPlugin(plugin)
-    Plugin a:plugin
-    let tmp = split(a:plugin, '/')
-    let tmp = split(tmp[-1], '''')
-    call add(g:pluginList, tmp[0])
+  Plugin a:plugin
+  let tmp = split(a:plugin, '/')
+  let tmp = split(tmp[-1], '''')
+  call add(g:pluginList, tmp[0])
 endfunction
 
 command! -nargs=1 AddPlugin call AppendPlugin(<f-args>)
 
 function! HasPlugin(plugin)
-    return index(g:pluginList, a:plugin) > -1
+  return index(g:pluginList, a:plugin) > -1
 endfunction
 
 "Required for Vundle use
@@ -165,18 +165,18 @@ AddPlugin 'ntpeters/vim-better-whitespace'
 AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
-    AddPlugin 'Lokaltog/vim-easymotion'
-    "Visual undo tree
-    AddPlugin 'mbbill/undotree'
-    if has('python')
-        "AddPlugin 'sjl/gundo.vim'
-        "Shell in vim
-        "AddPlugin 'rosenfeld/conque-term'
-    endif
+  AddPlugin 'Lokaltog/vim-easymotion'
+  "Visual undo tree
+  AddPlugin 'mbbill/undotree'
+  if has('python')
+    "AddPlugin 'sjl/gundo.vim'
+    "Shell in vim
+    "AddPlugin 'rosenfeld/conque-term'
+  endif
 endif
 
 if vundleStat == 0
-    PluginInstall
+  PluginInstall
 endif
 call vundle#end()
 filetype plugin indent on
@@ -193,133 +193,133 @@ let paneWidth = 25
 
 "Startify
 if HasPlugin('vim-startify')
-    let g:startify_skiplist = [
-                    \ 'COMMIT_EDITMSG',
-                    \ $VIMRUNTIME .'/doc',
-                    \ 'bundle/.*/doc',
-                    \ ]
-    autocmd FileType startify setlocal buftype=
-    nmap <leader>s :Startify<CR>
+  let g:startify_skiplist = [
+      \ 'COMMIT_EDITMSG',
+      \ $VIMRUNTIME .'/doc',
+      \ 'bundle/.*/doc',
+      \ ]
+  autocmd FileType startify setlocal buftype=
+  nmap <leader>s :Startify<CR>
 endif
 
 "Airline
 if HasPlugin('vim-airline')
-    set ttimeoutlen=50
-    "Show whitespace
-    let g:airline#extensions#whitespace#enabled = 0
-    "Enable the list of buffers
-    let g:airline#extensions#tabline#enabled = 1
-    "Show just the filename
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    "No > or <
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
+  set ttimeoutlen=50
+  "Show whitespace
+  let g:airline#extensions#whitespace#enabled = 0
+  "Enable the list of buffers
+  let g:airline#extensions#tabline#enabled = 1
+  "Show just the filename
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  "No > or <
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
 endif
 
 "Nerdtree
 if HasPlugin('nerdtree')
-    "if just called as vim, start NERDTree as well
-    autocmd vimenter * if !argc() | NERDTree | endif
-    "if just NERDTree left, quit
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-    let g:NERDTreeWinSize=paneWidth
-    map <C-n> :NERDTreeToggle<CR>
-    nmap <leader>n :NERDTreeToggle<CR>
+  "if just called as vim, start NERDTree as well
+  autocmd vimenter * if !argc() | NERDTree | endif
+  "if just NERDTree left, quit
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  let g:NERDTreeWinSize=paneWidth
+  map <C-n> :NERDTreeToggle<CR>
+  nmap <leader>n :NERDTreeToggle<CR>
 endif
 
 "CtrlP
 if HasPlugin('ctrlp.vim')
-    let g:ctrlp_extensions = ['funky']
-    let g:ctrlp_funky_syntax_highlight = 1
-    let g:ctrlp_custom_ignore = {
+  let g:ctrlp_extensions = ['funky']
+  let g:ctrlp_funky_syntax_highlight = 1
+  let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\v\.(exe|so|dll)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
-    let g:ctrlp_open_multiple_files = 'ri'
-    "nmap <C-P> :CtrlP<CR>
-    nmap <C-B> :CtrlPBuffer<CR>
-    if HasPlugin('ctrlp-funky')
-        nmap <C-F> :CtrlPFunky<CR>
-    endif
+  let g:ctrlp_open_multiple_files = 'ri'
+  "nmap <C-P> :CtrlP<CR>
+  nmap <C-B> :CtrlPBuffer<CR>
+  if HasPlugin('ctrlp-funky')
+    nmap <C-F> :CtrlPFunky<CR>
+  endif
 endif
 
 "Unite
 if HasPlugin('unite.vim')
-    call unite#filters#matcher_default#use(['matcher_fuzzy'])
-    "call unite#filters#sorter_default#use(['sorter_rank'])
-    nmap <leader>uf :Unite file -start-insert<CR>
-    "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
-    nmap <leader>ub :Unite buffer -start-insert<CR>
-    if HasPlugin('unite-colorscheme')
-        nmap <leader>uc :Unite colorscheme -start-insert<CR>
-    endif
-    if HasPlugin('vimfiler.vim')
-        let g:vimfiler_as_default_explorer = 1
-    endif
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  "call unite#filters#sorter_default#use(['sorter_rank'])
+  nmap <leader>uf :Unite file -start-insert<CR>
+  "nmap <leader>uf :Unite file -start-insert -buffer-name="unite"<CR>
+  nmap <leader>ub :Unite buffer -start-insert<CR>
+  if HasPlugin('unite-colorscheme')
+    nmap <leader>uc :Unite colorscheme -start-insert<CR>
+  endif
+  if HasPlugin('vimfiler.vim')
+    let g:vimfiler_as_default_explorer = 1
+  endif
 endif
 
 "Indentation Rules
 if HasPlugin('vim-indent-guides')
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_guide_size = 1
 endif
 
 "Whitespace
 if HasPlugin('vim-better-whitespace')
-    let g:better_whitespace_filetypes_blacklist=['unite']
-    nmap <leader><leader> :ToggleWhitespace<CR>
+  let g:better_whitespace_filetypes_blacklist=['unite']
+  nmap <leader><leader> :ToggleWhitespace<CR>
 endif
 
 "Easymotion
 if HasPlugin('vim-easymotion')
-    " Disabled default mappings
-    let g:EasyMotion_do_mapping = 0
-    let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
-    " Set easymotion key
-    map \ <Plug>(easymotion-prefix)
-    nmap <leader>l <Plug>(easymotion-bd-w)
-    nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
-    nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
+  " Disabled default mappings
+  let g:EasyMotion_do_mapping = 0
+  let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
+  " Set easymotion key
+  map \ <Plug>(easymotion-prefix)
+  nmap <leader>l <Plug>(easymotion-bd-w)
+  nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
+  nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
 endif
 
 "UndoTree
 if HasPlugin('undotree')
-    nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
-    let g:undotree_SplitWidth = paneWidth
-    let g:undotree_SetFocusWhenToggle = 1
+  nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
+  let g:undotree_SplitWidth = paneWidth
+  let g:undotree_SetFocusWhenToggle = 1
 endif
 
 "Conque
 if HasPlugin('conque-term')
-    let g:ConqueTerm_StartMessages = 0
-    function! OnConqueEnter(term)
-        DisableWhitespace
-    endfunction
-    function! OnConqueLeave(term)
-        EnableWhitespace
-    endfunction
-    call conque_term#register_function('buffer_enter', 'OnConqueEnter')
-    call conque_term#register_function('buffer_leave', 'OnConqueLeave')
-    nmap <leader>cq :ConqueTermVSplit<SPACE>
+  let g:ConqueTerm_StartMessages = 0
+  function! OnConqueEnter(term)
+    DisableWhitespace
+  endfunction
+  function! OnConqueLeave(term)
+    EnableWhitespace
+  endfunction
+  call conque_term#register_function('buffer_enter', 'OnConqueEnter')
+  call conque_term#register_function('buffer_leave', 'OnConqueLeave')
+  nmap <leader>cq :ConqueTermVSplit<SPACE>
 endif
 
 "Gundo
 if HasPlugin('gundo.vim')
-    nmap <leader>u :GundoToggle<CR>
-    nnoremap <F5> :GundoToggle<CR>
-    let g:gundo_width=paneWidth
+  nmap <leader>u :GundoToggle<CR>
+  nnoremap <F5> :GundoToggle<CR>
+  let g:gundo_width=paneWidth
 endif
 
 "========================================================================
 "Other commands and shortcuts
 
 "Refresh syntax from the start
-autocmd BufReadPost *.cc setf cpp
+"autocmd BufReadPost *.cc setf cpp
 autocmd BufEnter * syntax sync fromstart
 function! SyntaxRefresh()
-    syntax on
-    syntax sync fromstart
+  syntax on
+  syntax sync fromstart
 endfunction
 command! Sync call SyntaxRefresh()
 
@@ -366,29 +366,29 @@ colorscheme Tomorrow-Night
 
 "GUI Options
 if has('gui_running')
-    if has('win32') || has('win64')
-        set guifont=DejaVu_Sans_Mono:h10
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 11
-    endif
+  if has('win32') || has('win64')
+    set guifont=DejaVu_Sans_Mono:h10
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 11
+  endif
 
 "Conemu
 elseif !empty($CONEMUBUILD)
-    set term=xterm
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
-    "weird behaviour with Conemu
-    set t_Co=256
-    let g:airline_theme='tomorrow'
-    colorscheme Tomorrow-Night
+  set term=xterm
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+  "weird behaviour with Conemu
+  set t_Co=256
+  let g:airline_theme='tomorrow'
+  colorscheme Tomorrow-Night
 
 "Windows commandline
 elseif has('win32') || has('win64')
-    let g:airline_theme='murmur'
-    colorscheme default
+  let g:airline_theme='murmur'
+  colorscheme default
 
 "Probably Unix commandline
 else
-    "this prevents a huge lag in start time
-    set clipboard=exclude:.*
+  "this prevents a huge lag in start time
+  set clipboard=exclude:.*
 endif
