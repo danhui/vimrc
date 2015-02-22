@@ -212,7 +212,7 @@ if HasPlugin('vim-startify')
       \ 'bundle/.*/doc',
       \ ]
   autocmd FileType startify setlocal buftype=
-  nmap <leader>s :Startify<CR>
+  nnoremap <leader>s :Startify<CR>
 endif
 
 "Airline
@@ -237,7 +237,7 @@ if HasPlugin('nerdtree')
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   let g:NERDTreeWinSize=paneWidth
   map <C-n> :NERDTreeToggle<CR>
-  nmap <leader>n :NERDTreeToggle<CR>
+  nnoremap <leader>n :NERDTreeToggle<CR>
 endif
 
 "CtrlP
@@ -250,10 +250,10 @@ if HasPlugin('ctrlp.vim')
       \ 'link': 'some_bad_symbolic_links',
       \ }
   let g:ctrlp_open_multiple_files = 'ri'
-  "nmap <C-P> :CtrlP<CR>
-  nmap <C-B> :CtrlPBuffer<CR>
+  "nnoremap <C-P> :CtrlP<CR>
+  nnoremap <C-B> :CtrlPBuffer<CR>
   if HasPlugin('ctrlp-funky')
-    nmap <C-F> :CtrlPFunky<CR>
+    nnoremap <C-F> :CtrlPFunky<CR>
   endif
 endif
 
@@ -261,10 +261,10 @@ endif
 if HasPlugin('unite.vim')
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   "call unite#filters#sorter_default#use(['sorter_rank'])
-  nmap <leader>uf :Unite file -start-insert<CR>
-  nmap <leader>ub :Unite buffer -start-insert<CR>
+  nnoremap <leader>uf :Unite file -start-insert<CR>
+  nnoremap <leader>ub :Unite buffer -start-insert<CR>
   if HasPlugin('unite-colorscheme')
-    nmap <leader>uc :Unite colorscheme -start-insert<CR>
+    nnoremap <leader>uc :Unite colorscheme -start-insert<CR>
   endif
   if HasPlugin('vimfiler.vim')
     let g:vimfiler_as_default_explorer = 1
@@ -280,7 +280,7 @@ endif
 "Whitespace
 if HasPlugin('vim-better-whitespace')
   let g:better_whitespace_filetypes_blacklist=['unite']
-  nmap <leader><leader> :ToggleWhitespace<CR>
+  nnoremap <leader><SPACE> :ToggleWhitespace<CR>
 endif
 
 "Easymotion
@@ -290,9 +290,9 @@ if HasPlugin('vim-easymotion')
   let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
   " Set easymotion key
   map \ <Plug>(easymotion-prefix)
-  nmap <leader>l <Plug>(easymotion-bd-w)
-  nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
-  nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
+  nnoremap <leader>l <Plug>(easymotion-bd-w)
+  nnoremap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
+  nnoremap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
 endif
 
 "UndoTree
@@ -303,7 +303,7 @@ if HasPlugin('undotree')
   let g:undotree_SetFocusWhenToggle = 1
 "Gundo
 elseif HasPlugin('gundo.vim')
-  nmap <leader>u :GundoToggle<CR>
+  nnoremap <leader>u :GundoToggle<CR>
   nnoremap <F5> :GundoToggle<CR>
   let g:gundo_width=paneWidth
 endif
@@ -319,7 +319,7 @@ if HasPlugin('conque-term')
   endfunction
   call conque_term#register_function('buffer_enter', 'OnConqueEnter')
   call conque_term#register_function('buffer_leave', 'OnConqueLeave')
-  nmap <leader>cq :ConqueTermVSplit<SPACE>
+  nnoremap <leader>cq :ConqueTermVSplit<SPACE>
 endif
 
 "========================================================================
@@ -335,37 +335,38 @@ endfunction
 command! Sync call SyntaxRefresh()
 
 "Buffers
-nmap <leader>t :enew!<CR>
-nmap <leader>k :bnext!<CR>
-nmap <leader>j :bprevious!<CR>
-nmap <leader>x :bp <BAR> bd #<CR>
+nnoremap <leader>t :enew!<CR>
+nnoremap <leader>k :bnext!<CR>
+nnoremap <leader>j :bprevious!<CR>
+nnoremap <leader>x :bp <BAR> bd #<CR>
 
 "Split navigation
-nmap <leader>v :vsplit<CR><C-W><C-L>
+nnoremap <leader>v :vsplit<CR><C-W><C-L>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Common shortcuts
-nmap <leader>w :w<CR>
-nmap <leader>wq :wq<CR>
-nmap <leader>aq :qa<CR>
-nmap <leader>q :q<CR>
-nmap <leader>e :e<SPACE>
+inoremap <S-SPACE> <ESC>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <leader>aq :qa<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>e :e<SPACE>
 
 "Change directory to current file's
-nmap <leader>cd :cd %:p:h<CR>
+nnoremap <leader>cd :cd %:p:h<CR>
 
 "Reload vimrc
-nmap <leader>rc :so $MYVIMRC<CR>
+nnoremap <leader>rc :so $MYVIMRC<CR>
 
 "Clear the search
-nmap <leader>/ :nohl <BAR> let @/=""<CR>
+nnoremap <leader>/ :nohl <BAR> let @/=""<CR>
 
 "Paste toggle
 set pastetoggle=<F10>
-nmap <leader>p :set invpaste<CR>
+nnoremap <leader>p :set invpaste<CR>
 
 "========================================================================
 "Syntax, fonts, themes, and colorscheme
