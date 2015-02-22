@@ -1,6 +1,6 @@
 ###About
 
-Simply so that I can grab my vim configurations.
+For easy access to my vim configuration.
 
 ###Installation instructions
 
@@ -19,8 +19,8 @@ To install on Windows:
     $ echo "runtime vimrc" > .vimrc
     $ vim +q
 
-A brief explaination of the instructions:  
+What these commands do:  
 1. Switch to the home directory  
-2. Install from github  
-3. Create .vimrc  
-4. Run vim once to install all plugins and then quit  
+2. Clone from github  
+3. Create a .vimrc and just point it towards vimrc  
+4. Run vim once to setup the plugin manager and plugins and then quit  
