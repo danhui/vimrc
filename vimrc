@@ -232,7 +232,7 @@ endif
 "Nerdtree
 if HasPlugin('nerdtree')
   "if just called as vim, start NERDTree as well
-  autocmd vimenter * if !argc() | NERDTree | endif
+  "autocmd vimenter * if !argc() | NERDTree | endif
   "if just NERDTree left, quit
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   let g:NERDTreeWinSize=paneWidth
@@ -242,7 +242,6 @@ endif
 
 "CtrlP
 if HasPlugin('ctrlp.vim')
-  let g:ctrlp_extensions = ['funky']
   let g:ctrlp_funky_syntax_highlight = 1
   let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -253,6 +252,7 @@ if HasPlugin('ctrlp.vim')
   "nnoremap <C-P> :CtrlP<CR>
   nnoremap <C-B> :CtrlPBuffer<CR>
   if HasPlugin('ctrlp-funky')
+    let g:ctrlp_extensions = ['funky']
     nnoremap <C-F> :CtrlPFunky<CR>
   endif
 endif
@@ -331,8 +331,10 @@ autocmd BufEnter * syntax sync fromstart
 function! SyntaxRefresh()
   syntax on
   syntax sync fromstart
+  AirlineRefresh
 endfunction
-command! Sync call SyntaxRefresh()
+command! Refresh call SyntaxRefresh()
+nnoremap <leader>r :Refresh<CR>
 
 "Buffers
 nnoremap <leader>t :enew!<CR>
@@ -348,7 +350,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Common shortcuts
-inoremap <S-SPACE> <ESC>
+inoremap jj <ESC>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>aq :qa<CR>
