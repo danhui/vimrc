@@ -61,6 +61,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 "Windows
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 
+"Session options
+set sessionoptions="curdir"
+
 "Persistant history
 set undofile
 set undolevels=1000
