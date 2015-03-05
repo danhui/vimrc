@@ -141,6 +141,9 @@ if HasPlugin("ctrlp.vim")
   AddPlugin 'tacahiroy/ctrlp-funky'
 endif
 
+"Another way to browse by function name, requires ctags
+AddPlugin 'majutsushi/tagbar'
+
 "Code completion with <TAB>
 AddPlugin 'ervandew/supertab'
 
@@ -206,6 +209,13 @@ let mapleader=" "
 
 "Pane width (applies to drawers, e.g. Nerdtree, undo trees)
 let paneWidth = 25
+
+"Tagbar
+if HasPlugin('tagbar')
+  let g:tagbar_left = 1
+  let g:tagbar_vertical = 15
+  nnoremap <F8> :TagbarToggle<CR>
+endif
 
 "Startify
 if HasPlugin('vim-startify')
