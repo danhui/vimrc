@@ -164,6 +164,8 @@ AddPlugin 'chriskempson/base16-vim'
 AddPlugin 'altercation/vim-colors-solarized'
 AddPlugin 'Lokaltog/vim-distinguished'
 AddPlugin 'vim-scripts/xoria256.vim'
+"AddPlugin 'nanotech/jellybeans.vim'
+"AddPlugin 'ChrisKempson/Vim-Tomorrow-Theme'
 
 "Colorscheme chooser
 "AddPlugin 'xolox/vim-misc'
@@ -214,6 +216,8 @@ let paneWidth = 25
 if HasPlugin('tagbar')
   let g:tagbar_left = 1
   let g:tagbar_vertical = 15
+  let g:tagbar_autoclose = 1
+  let g:tagbar_autofocus = 1
   nnoremap <F8> :TagbarToggle<CR>
 endif
 
