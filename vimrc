@@ -307,9 +307,9 @@ if HasPlugin('vim-easymotion')
   let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
   " Set easymotion key
   map \ <Plug>(easymotion-prefix)
-  nnoremap <leader>l <Plug>(easymotion-bd-w)
-  nnoremap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
-  nnoremap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
+  nmap <leader>l <Plug>(easymotion-bd-w)
+  nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
+  nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
 endif
 
 "UndoTree
