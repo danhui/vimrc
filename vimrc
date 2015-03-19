@@ -230,7 +230,7 @@ if HasPlugin('vim-startify')
       \ $VIMRUNTIME .'/doc',
       \ 'bundle/.*/doc',
       \ ]
-  autocmd FileType startify setlocal buftype=
+  autocmd FileType startify setlocal colorcolumn=
   nnoremap <leader>s :Startify<CR>
 endif
 
