@@ -237,7 +237,7 @@ endif
 "Airline
 if HasPlugin('vim-airline')
   set ttimeoutlen=50
-  "Show whitespace
+  "Don't show whitespace, there's another plugin for that
   let g:airline#extensions#whitespace#enabled = 0
   "Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
@@ -312,7 +312,7 @@ if HasPlugin('vim-easymotion')
   " Disabled default mappings
   let g:EasyMotion_do_mapping = 0
   let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
-  " Set easymotion key
+  " Set easymotion movement
   nmap s <Plug>(easymotion-bd-w)
 endif
 
