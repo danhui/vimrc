@@ -211,11 +211,13 @@ let mapleader=" "
 
 "Pane width (applies to drawers, e.g. Nerdtree, undo trees)
 let paneWidth = 25
+"Pane height (apples to horizontal drawers, such as unite and ctrlp)
+let paneHeight = 12
 
 "Tagbar
 if HasPlugin('tagbar')
   let g:tagbar_left = 1
-  let g:tagbar_vertical = 15
+  let g:tagbar_vertical = paneHeight
   let g:tagbar_autoclose = 1
   let g:tagbar_autofocus = 1
   nnoremap <F8> :TagbarToggle<CR>
@@ -266,7 +268,8 @@ if HasPlugin('ctrlp.vim')
       \ 'link': 'some_bad_symbolic_links',
       \ }
   let g:ctrlp_open_multiple_files = 'ri'
-  "nnoremap <C-P> :CtrlP<CR>
+  let g:ctrlp_match_window = 'top,max:' . paneHeight
+  nnoremap <C-P> :CtrlP<CR>
   nnoremap <C-B> :CtrlPBuffer<CR>
   if HasPlugin('ctrlp-funky')
     let g:ctrlp_extensions = ['funky']
@@ -276,6 +279,10 @@ endif
 
 "Unite
 if HasPlugin('unite.vim')
+  call unite#custom#profile('default', 'context', {
+  \   'start-insert' : 1,
+  \   'winheight' : paneHeight,
+  \ })
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   "call unite#filters#sorter_default#use(['sorter_rank'])
   nnoremap <leader>uf :Unite file -start-insert<CR>
@@ -306,10 +313,7 @@ if HasPlugin('vim-easymotion')
   let g:EasyMotion_do_mapping = 0
   let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
   " Set easymotion key
-  map \ <Plug>(easymotion-prefix)
-  nmap <leader>l <Plug>(easymotion-bd-w)
-  nmap <Plug>(easymotion-prefix)s <Plug>(easymotion-s2)
-  nmap <Plug>(easymotion-prefix)w <Plug>(easymotion-w)
+  nmap s <Plug>(easymotion-bd-w)
 endif
 
 "UndoTree
@@ -322,7 +326,7 @@ if HasPlugin('undotree')
 elseif HasPlugin('gundo.vim')
   nnoremap <leader>u :GundoToggle<CR>
   nnoremap <F5> :GundoToggle<CR>
-  let g:gundo_width=paneWidth
+  let g:gundo_width = paneWidth
 endif
 
 "Conque
@@ -343,7 +347,6 @@ endif
 "Other commands and shortcuts
 
 "Refresh syntax from the start
-"autocmd BufReadPost *.cc setf cpp
 autocmd BufEnter * syntax sync fromstart
 function! SyntaxRefresh()
   syntax on
