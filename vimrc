@@ -135,10 +135,10 @@ endif
 "AddPlugin 'scrooloose/nerdtree'
 
 "CtrlP, another nice set of tools
-AddPlugin 'ctrlpvim/ctrlp.vim'
+"AddPlugin 'ctrlpvim/ctrlp.vim'
 if HasPlugin("ctrlp.vim")
   "Search by function name in file
-  AddPlugin 'tacahiroy/ctrlp-funky'
+  "AddPlugin 'tacahiroy/ctrlp-funky'
 endif
 
 "Another way to browse by function name, requires ctags
@@ -220,6 +220,7 @@ if HasPlugin('tagbar')
   let g:tagbar_vertical = paneHeight
   let g:tagbar_autoclose = 1
   let g:tagbar_autofocus = 1
+  let g:tagbar_compact = 1
   nnoremap <F8> :TagbarToggle<CR>
   nnoremap <leader>f :TagbarToggle<CR>
 endif
