@@ -94,7 +94,7 @@ if has("win32") || has("win64")
   silent call vundle#begin("$HOME/vimfiles/bundle/")
 else
   if !isdirectory(expand("~/.vim/bundle/vundle"))
-    silent call system("!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle")
+    silent call system("git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle")
     let vundleStat=0
   endif
   set rtp+=$HOME/.vim/bundle/vundle/
