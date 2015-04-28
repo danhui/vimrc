@@ -382,6 +382,9 @@ nnoremap <leader>e :e<SPACE>
 "Call Terminal
 nnoremap <C-D> :sh<CR>
 
+"Call make
+nnoremap <leader>m :make<CR>
+
 "Change directory to current file's
 nnoremap <leader>cd :cd %:p:h<CR>
 
