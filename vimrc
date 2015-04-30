@@ -52,9 +52,6 @@ autocmd VimEnter * set vb t_vb=
 "Highlight search results
 set hlsearch
 
-"Show matching brackets
-"set showmatch
-
 "Files to ignore
 "Unix
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
