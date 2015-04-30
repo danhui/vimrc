@@ -416,6 +416,10 @@ elseif !empty($CONEMUBUILD)
   set term=xterm
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
+  inoremap <Esc>[62~ <C-X><C-E>
+  inoremap <Esc>[63~ <C-X><C-Y>
+  nnoremap <Esc>[62~ <C-E>
+  nnoremap <Esc>[63~ <C-Y>
   "weird behaviour with Conemu
   set t_Co=256
   let g:airline_theme='tomorrow'
