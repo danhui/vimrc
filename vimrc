@@ -371,6 +371,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Common shortcuts
+nnoremap ; :
 inoremap jj <ESC>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
