@@ -163,6 +163,7 @@ AddPlugin 'chriskempson/base16-vim'
 AddPlugin 'altercation/vim-colors-solarized'
 AddPlugin 'Lokaltog/vim-distinguished'
 AddPlugin 'vim-scripts/xoria256.vim'
+AddPlugin 'morhetz/gruvbox'
 "AddPlugin 'nanotech/jellybeans.vim'
 "AddPlugin 'ChrisKempson/Vim-Tomorrow-Theme'
 
