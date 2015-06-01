@@ -380,6 +380,14 @@ nnoremap <leader>aq :qa<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>e :e<SPACE>
 
+"Dealing with the global register
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 "Call Terminal
 nnoremap <C-D> :sh<CR>
 
@@ -397,7 +405,7 @@ nnoremap <leader>/ :nohl <BAR> let @/=""<CR>
 
 "Paste toggle
 set pastetoggle=<F10>
-nnoremap <leader>p :set invpaste<CR>
+nnoremap <leader>pp :set invpaste<CR>
 
 "========================================================================
 "Syntax, fonts, themes, and colorscheme
