@@ -49,6 +49,9 @@ set t_vb=
 autocmd GUIEnter * set vb t_vb=
 autocmd VimEnter * set vb t_vb=
 
+" Redraw on refocus
+autocmd FocusGained * :redraw!
+
 "Highlight search results
 set hlsearch
 
@@ -405,7 +408,7 @@ nnoremap <leader>/ :nohl <BAR> let @/=""<CR>
 
 "Paste toggle
 set pastetoggle=<F10>
-nnoremap <leader>pp :set invpaste<CR>
+nnoremap <leader>ip :set invpaste<CR>
 
 "========================================================================
 "Syntax, fonts, themes, and colorscheme
