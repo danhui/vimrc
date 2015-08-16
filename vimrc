@@ -190,6 +190,7 @@ AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
   AddPlugin 'Lokaltog/vim-easymotion'
+  "AddPlugin 'justinmk/vim-sneak'
   "Visual undo tree
   AddPlugin 'mbbill/undotree'
   if has('python')
@@ -319,6 +320,13 @@ if HasPlugin('vim-easymotion')
   let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
   " Set easymotion movement
   nmap s <Plug>(easymotion-bd-w)
+endif
+
+"Sneak
+if HasPlugin('vim-sneak')
+  let g:sneak#streak = 1
+  nmap s <Plug>(SneakStreak)
+  nmap S <Plug>(SneakStreakBackward)
 endif
 
 "UndoTree
