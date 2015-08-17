@@ -149,13 +149,13 @@ AddPlugin 'majutsushi/tagbar'
 "Code completion with <TAB>
 AddPlugin 'ervandew/supertab'
 
-"Surround, makes {a,b,c} -> [a,b,c] easy
+"Surround, makes {a,b,c} -> [a,b,c] easy, cs{[
 AddPlugin 'tpope/vim-surround'
 
 "Buffer handling
 "AddPlugin 'mattdbridges/bufkill.vim'
 
-"Switch buffers in the split layout
+"Switch buffers in the split layout with <leader>ww
 AddPlugin 'wesQ3/vim-windowswap'
 
 "Giant collection of colorschemes
@@ -185,7 +185,7 @@ AddPlugin 'sheerun/vim-polyglot'
 "Show trailing whitespace
 AddPlugin 'ntpeters/vim-better-whitespace'
 
-"Indentation marking
+"Indentation marking, <leader>ig
 AddPlugin 'nathanaelkane/vim-indent-guides'
 
 if v:version >= 703
@@ -305,6 +305,7 @@ endif
 if HasPlugin('vim-indent-guides')
   let g:indent_guides_start_level = 1
   let g:indent_guides_guide_size = 1
+  nmap <leader>ig <Plug>IndentGuidesToggle
 endif
 
 "Whitespace
@@ -392,12 +393,12 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>e :e<SPACE>
 
 "Dealing with the global register
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
 
 "Call Terminal
 nnoremap <C-D> :sh<CR>
