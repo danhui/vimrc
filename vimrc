@@ -123,6 +123,9 @@ endfunction
 "Required for Vundle use
 AddPlugin 'gmarik/vundle'
 
+"Change GUI Icons
+AddPlugin 'istepura/vim-toolbar-icons-silk'
+
 "Status line
 AddPlugin 'bling/vim-airline'
 
@@ -375,6 +378,7 @@ nnoremap <leader>t :enew!<CR>
 nnoremap <leader>k :bnext!<CR>
 nnoremap <leader>j :bprevious!<CR>
 nnoremap <leader>x :bp <BAR> bd #<CR>
+nnoremap <leader>xx :bd<CR>
 
 "Split navigation
 nnoremap <leader>v :vsplit<CR><C-W><C-L>
