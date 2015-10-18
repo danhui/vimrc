@@ -82,6 +82,12 @@ if has('persistent_undo')
   endif
 endif
 
+"Folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
 "========================================================================
 "Plugins
 
@@ -370,8 +376,16 @@ function! SyntaxRefresh()
   syntax sync fromstart
   AirlineRefresh
 endfunction
-command! Refresh call SyntaxRefresh()
-nnoremap <leader>r :Refresh<CR>
+nnoremap <leader>r :call SyntaxRefresh()<CR>
+
+function! FoldToggle()
+  if foldclosed(line(".")) != -1
+    execute "normal! zO"
+  else
+    execute "normal! zc"
+  endif
+endfunction
+nnoremap zz :call FoldToggle()<CR>
 
 "Buffers
 nnoremap <leader>t :enew!<CR>
