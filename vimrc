@@ -378,11 +378,12 @@ function! SyntaxRefresh()
 endfunction
 nnoremap <leader>r :call SyntaxRefresh()<CR>
 
+"Toggle Folds
 function! FoldToggle()
   if foldclosed(line(".")) != -1
-    execute "normal! zO"
+    silent! execute "normal! zO"
   else
-    execute "normal! zc"
+    silent! execute "normal! zc"
   endif
 endfunction
 nnoremap zz :call FoldToggle()<CR>
@@ -404,6 +405,7 @@ nnoremap <C-H> <C-W><C-H>
 "Common shortcuts
 nnoremap ; :
 inoremap jj <ESC>
+inoremap jk <ESC>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>aq :qa<CR>
