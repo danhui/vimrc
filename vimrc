@@ -116,7 +116,7 @@ let g:pluginList = []
 function! AppendPlugin(plugin)
   Plugin a:plugin
   let tmp = split(a:plugin, '/')
-  let tmp = split(tmp[-1], '''')
+  let tmp = split(tmp[1], '''')
   call add(g:pluginList, tmp[0])
 endfunction
 
