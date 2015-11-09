@@ -247,6 +247,7 @@ if HasPlugin('vim-startify')
       \ ]
   autocmd FileType startify setlocal colorcolumn=
   nnoremap <leader>s :Startify<CR>
+  let g:startify_enable_unsafe = 1
 endif
 
 "Airline
@@ -411,6 +412,7 @@ nnoremap <leader>wq :wq<CR>
 nnoremap <leader>aq :qa<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>e :e<SPACE>
+nnoremap <leader>re :e!<CR>
 
 "Dealing with the global register
 vmap <leader>y "+y
