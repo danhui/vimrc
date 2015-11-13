@@ -84,7 +84,7 @@ endif
 
 "Folding
 set foldmethod=indent
-set foldnestmax=10
+set foldnestmax=1
 set nofoldenable
 set foldlevel=1
 
