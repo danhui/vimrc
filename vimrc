@@ -134,6 +134,7 @@ AddPlugin 'istepura/vim-toolbar-icons-silk'
 
 "Status line
 AddPlugin 'bling/vim-airline'
+AddPlugin 'vim-airline/vim-airline-themes'
 
 "Unite, a powerful set of tools
 AddPlugin 'Shougo/unite.vim'
