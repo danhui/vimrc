@@ -41,6 +41,9 @@ set backspace=2
 
 "Use mouse
 set mouse=a
+if has('mouse_sgr')
+  set ttymouse=sgr
+endif
 
 "No bells
 set noerrorbells
@@ -147,7 +150,7 @@ endif
 "AddPlugin 'scrooloose/nerdtree'
 
 "CtrlP, another nice set of tools
-"AddPlugin 'ctrlpvim/ctrlp.vim'
+AddPlugin 'ctrlpvim/ctrlp.vim'
 if HasPlugin("ctrlp.vim")
   "Search by function name in file
   "AddPlugin 'tacahiroy/ctrlp-funky'
