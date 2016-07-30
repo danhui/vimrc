@@ -147,7 +147,7 @@ if HasPlugin("unite.vim")
 endif
 
 "File explorer sidebar
-"AddPlugin 'scrooloose/nerdtree'
+AddPlugin 'scrooloose/nerdtree'
 
 "CtrlP, another nice set of tools
 AddPlugin 'ctrlpvim/ctrlp.vim'
@@ -261,8 +261,6 @@ if HasPlugin('vim-airline')
   let g:airline#extensions#whitespace#enabled = 0
   "Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
-  "Show just the filename
-  let g:airline#extensions#tabline#fnamemod = ':t'
   "No > or <
   let g:airline_left_sep=''
   let g:airline_right_sep=''
@@ -304,7 +302,7 @@ if HasPlugin('unite.vim')
   \   'winheight' : paneHeight,
   \ })
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  "call unite#filters#sorter_default#use(['sorter_rank'])
+  call unite#filters#sorter_default#use(['sorter_rank'])
   nnoremap <leader>o :Unite file -start-insert<CR>
   nnoremap <leader>b :Unite buffer -quick-match<CR>
   if HasPlugin('unite-colorscheme')
