@@ -389,7 +389,7 @@ function! FoldToggle()
     silent! execute "normal! zc"
   endif
 endfunction
-nnoremap zz :call FoldToggle()<CR>
+nnoremap <leader>z :call FoldToggle()<CR>
 
 "Buffers
 nnoremap <leader>t :enew!<CR>
