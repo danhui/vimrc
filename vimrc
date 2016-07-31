@@ -435,7 +435,7 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 "Call Terminal
-nnoremap <C-D> :sh<CR>
+nnoremap <leader><C-D> :sh<CR>
 
 "Call make
 nnoremap <leader>m :!make<CR>
