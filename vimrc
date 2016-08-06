@@ -158,9 +158,11 @@ endif
 
 "Another way to browse by function name, requires ctags
 AddPlugin 'majutsushi/tagbar'
+AddPlugin 'ludovicchabant/vim-gutentags'
 
 "Code completion with <TAB>
-AddPlugin 'ervandew/supertab'
+AddPlugin 'ajh17/VimCompletesMe'
+"AddPlugin 'ervandew/supertab'
 
 "Surround, makes {a,b,c} -> [a,b,c] easy, cs{[
 AddPlugin 'tpope/vim-surround'
