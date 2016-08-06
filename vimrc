@@ -303,8 +303,8 @@ if HasPlugin('unite.vim')
   \ })
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
-  nnoremap <leader>o :Unite file -start-insert<CR>
-  nnoremap <leader>b :Unite buffer -quick-match<CR>
+  nnoremap <leader>o :Unite file_rec -start-insert<CR>
+  nnoremap <leader>b :Unite buffer -start-insert<CR>
   if HasPlugin('unite-colorscheme')
     nnoremap <leader>uc :Unite colorscheme -start-insert<CR>
   endif
