@@ -232,6 +232,26 @@ let mapleader=" "
 let paneWidth = 25
 "Pane height (apples to horizontal drawers, such as unite and ctrlp)
 let paneHeight = 12
+"
+"VimCompletesMe
+if HasPlugin('VimCompletesMe')
+  let b:vcm_tab_complete = 'tags'
+endif
+
+"Gutentags
+if HasPlugin('vim-gutentags')
+  if has("win32") || has("win64")
+    if !isdirectory(expand($HOME."\\vimfiles\\guten"))
+      silent call system("mkdir ".$HOME."\\vimfiles\\guten")
+    end
+    let g:gutentags_cache_dir = expand($HOME."\\vimfiles\\guten")
+  else
+    if !isdirectory(expand("~/.vim/guten"))
+      silent call system("mkdir ~/.vim/guten")
+    end
+    let g:gutentags_cache_dir = expand("~/.vim/guten")
+  endif
+endif
 
 "Tagbar
 if HasPlugin('tagbar')
