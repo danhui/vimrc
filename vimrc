@@ -150,7 +150,7 @@ endif
 AddPlugin 'scrooloose/nerdtree'
 
 "CtrlP, another nice set of tools
-AddPlugin 'ctrlpvim/ctrlp.vim'
+"AddPlugin 'ctrlpvim/ctrlp.vim'
 if HasPlugin("ctrlp.vim")
   "Search by function name in file
   "AddPlugin 'tacahiroy/ctrlp-funky'
@@ -320,13 +320,14 @@ endif
 "Unite
 if HasPlugin('unite.vim')
   call unite#custom#profile('default', 'context', {
-  \   'start-insert' : 1,
   \   'winheight' : paneHeight,
   \ })
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
+  call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
   nnoremap <leader>o :Unite file_rec -start-insert<CR>
   nnoremap <leader>b :Unite buffer -start-insert<CR>
+  nnoremap <leader>l :Unite -buffer-name=search -start-insert line<CR>
   if HasPlugin('unite-colorscheme')
     nnoremap <leader>uc :Unite colorscheme -start-insert<CR>
   endif
@@ -344,7 +345,6 @@ endif
 
 "Whitespace
 if HasPlugin('vim-better-whitespace')
-  let g:better_whitespace_filetypes_blacklist=['unite']
   nnoremap <leader><SPACE> :ToggleWhitespace<CR>
 endif
 
