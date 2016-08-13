@@ -237,6 +237,7 @@ let paneHeight = 12
 "VimCompletesMe
 if HasPlugin('VimCompletesMe')
   let b:vcm_tab_complete = 'tags'
+  inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 "Gutentags
