@@ -182,6 +182,7 @@ AddPlugin 'altercation/vim-colors-solarized'
 AddPlugin 'Lokaltog/vim-distinguished'
 AddPlugin 'vim-scripts/xoria256.vim'
 AddPlugin 'morhetz/gruvbox'
+AddPlugin 'romainl/Apprentice'
 "AddPlugin 'nanotech/jellybeans.vim'
 "AddPlugin 'ChrisKempson/Vim-Tomorrow-Theme'
 
