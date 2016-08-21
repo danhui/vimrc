@@ -143,7 +143,7 @@ AddPlugin 'vim-airline/vim-airline-themes'
 AddPlugin 'Shougo/unite.vim'
 if HasPlugin("unite.vim")
   AddPlugin 'ujihisa/unite-colorscheme'
-  AddPlugin 'Shougo/vimfiler.vim'
+  "AddPlugin 'Shougo/vimfiler.vim'
 endif
 
 "File explorer sidebar
@@ -329,8 +329,6 @@ if HasPlugin('unite.vim')
   call unite#custom#profile('default', 'context', {
   \   'winheight' : paneHeight,
   \ })
-  let g:unite_matcher_fuzzy_max_input_length = 255
-  let g:unite_source_rec_max_cache_files = 50000
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
   call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
