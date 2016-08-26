@@ -67,22 +67,33 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.tmp
 "Session options
 set sessionoptions=buffers,curdir
 
+function! CreatePath(path)
+  let vimrcDir=""
+  let slash=""
+  if has("win32") || has("win64")
+    let vimrcDir=$HOME."\\vimfiles"
+    let slash="\\"
+  else
+    let vimrcDir="~/.vim"
+    let slash="/"
+  endif
+  return join([vimrcDir] + a:path, slash)
+endfunction
+
+function! CreateDir(path)
+  let fullPath=CreatePath(a:path)
+  if !isdirectory(expand(fullPath))
+    silent call system("mkdir ".fullPath)
+  endif
+endfunction
+
 "Persistant history
 if has('persistent_undo')
   set undofile
   set undolevels=1000
   set undoreload=10000
-  if has("win32") || has("win64")
-    if !isdirectory(expand($HOME."\\vimfiles\\undo"))
-      silent call system("mkdir ".$HOME."\\vimfiles\\undo")
-    end
-    set undodir=$HOME/vimfiles/undo
-  else
-    if !isdirectory(expand("~/.vim/undo"))
-      silent call system("mkdir ~/.vim/undo")
-    end
-    set undodir=~/.vim/undo
-  endif
+  call CreateDir(["undo"])
+  let &undodir=CreatePath(["undo"])
 endif
 
 "Folding
@@ -96,34 +107,26 @@ set foldlevel=1
 
 "Check if Vundle needs to be installed
 let vundleStat=1
-if has("win32") || has("win64")
-  if !isdirectory(expand($HOME."\\vimfiles\\bundle\\vundle"))
-    silent call system("git clone https://github.com/gmarik/vundle ".$HOME."\\vimfiles\\bundle\\vundle")
-    let vundleStat=0
-  endif
-  set rtp+=$HOME/vimfiles/bundle/vundle/
-  silent call vundle#begin("$HOME/vimfiles/bundle/")
-else
-  if !isdirectory(expand("~/.vim/bundle/vundle"))
-    silent call system("git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle")
-    let vundleStat=0
-  endif
-  set rtp+=$HOME/.vim/bundle/vundle/
-  call vundle#begin("$HOME/.vim/bundle/")
-end
+let vundlePath=CreatePath(["bundle", "vundle"])
+if !isdirectory(expand(vundlePath))
+  silent call system("git clone https://github.com/gmarik/vundle ".vundlePath)
+  let vundleStat=0
+endif
+let &rtp.=','.vundlePath
+call vundle#begin(CreatePath(["bundle"]))
 
 "AddPlugin allows for easy switching between plugin managers
 "HasPlugin only loads plugin settings if the plugin was actually loaded
 let g:pluginList = []
 
-function! AppendPlugin(plugin)
+function! IAddPlugin(plugin)
   Plugin a:plugin
   let tmp = split(a:plugin, '/')
   let tmp = split(tmp[1], '''')
   call add(g:pluginList, tmp[0])
 endfunction
 
-command! -nargs=1 AddPlugin call AppendPlugin(<f-args>)
+command! -nargs=1 AddPlugin call IAddPlugin(<f-args>)
 
 function! HasPlugin(plugin)
   return index(g:pluginList, a:plugin) > -1
@@ -242,17 +245,8 @@ endif
 
 "Gutentags
 if HasPlugin('vim-gutentags')
-  if has("win32") || has("win64")
-    if !isdirectory(expand($HOME."\\vimfiles\\guten"))
-      silent call system("mkdir ".$HOME."\\vimfiles\\guten")
-    end
-    let g:gutentags_cache_dir = expand($HOME."\\vimfiles\\guten")
-  else
-    if !isdirectory(expand("~/.vim/guten"))
-      silent call system("mkdir ~/.vim/guten")
-    end
-    let g:gutentags_cache_dir = expand("~/.vim/guten")
-  endif
+  call CreateDir(["guten"])
+  let g:gutentags_cache_dir=expand(CreatePath(["guten"]))
 endif
 
 "Tagbar
