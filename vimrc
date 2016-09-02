@@ -117,12 +117,12 @@ call vundle#begin(CreatePath(["bundle"]))
 
 "AddPlugin allows for easy switching between plugin managers
 "HasPlugin only loads plugin settings if the plugin was actually loaded
-let g:pluginList = []
+let g:pluginList=[]
 
 function! IAddPlugin(plugin)
   Plugin a:plugin
-  let tmp = split(a:plugin, '/')
-  let tmp = split(tmp[1], '''')
+  let tmp=split(a:plugin, '/')
+  let tmp=split(tmp[1], '''')
   call add(g:pluginList, tmp[0])
 endfunction
 
@@ -233,13 +233,13 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 "Pane width (applies to drawers, e.g. Nerdtree, undo trees)
-let paneWidth = 25
+let paneWidth=25
 "Pane height (apples to horizontal drawers, such as unite and ctrlp)
-let paneHeight = 12
+let paneHeight=12
 "
 "VimCompletesMe
 if HasPlugin('VimCompletesMe')
-  let b:vcm_tab_complete = 'tags'
+  let b:vcm_tab_complete='tags'
   inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
@@ -251,34 +251,34 @@ endif
 
 "Tagbar
 if HasPlugin('tagbar')
-  let g:tagbar_left = 1
-  let g:tagbar_vertical = paneHeight
-  let g:tagbar_autoclose = 1
-  let g:tagbar_autofocus = 1
-  let g:tagbar_compact = 1
+  let g:tagbar_left=1
+  let g:tagbar_vertical=paneHeight
+  let g:tagbar_autoclose=1
+  let g:tagbar_autofocus=1
+  let g:tagbar_compact=1
   nnoremap <F8> :TagbarToggle<CR>
   nnoremap <leader>f :TagbarToggle<CR>
 endif
 
 "Startify
 if HasPlugin('vim-startify')
-  let g:startify_skiplist = [
+  let g:startify_skiplist=[
       \ 'COMMIT_EDITMSG',
       \ $VIMRUNTIME .'/doc',
       \ 'bundle/.*/doc',
       \ ]
   autocmd FileType startify setlocal colorcolumn=
   nnoremap <leader>s :Startify<CR>
-  let g:startify_enable_unsafe = 1
+  let g:startify_enable_unsafe=1
 endif
 
 "Airline
 if HasPlugin('vim-airline')
   set ttimeoutlen=50
   "Don't show whitespace, there's another plugin for that
-  let g:airline#extensions#whitespace#enabled = 0
+  let g:airline#extensions#whitespace#enabled=0
   "Enable the list of buffers
-  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#enabled=1
   "No > or <
   let g:airline_left_sep=''
   let g:airline_right_sep=''
@@ -297,18 +297,18 @@ endif
 
 "CtrlP
 if HasPlugin('ctrlp.vim')
-  let g:ctrlp_funky_syntax_highlight = 1
-  let g:ctrlp_custom_ignore = {
+  let g:ctrlp_funky_syntax_highlight=1
+  let g:ctrlp_custom_ignore={
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\v\.(exe|so|dll)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
-  let g:ctrlp_open_multiple_files = 'ri'
-  let g:ctrlp_match_window = 'top,max:' . paneHeight
+  let g:ctrlp_open_multiple_files='ri'
+  let g:ctrlp_match_window='top,max:' . paneHeight
   nnoremap <C-P> :CtrlP<CR>
   nnoremap <C-B> :CtrlPBuffer<CR>
   if HasPlugin('ctrlp-funky')
-    let g:ctrlp_extensions = ['funky']
+    let g:ctrlp_extensions=['funky']
     nnoremap <C-F> :CtrlPFunky<CR>
   endif
 endif
@@ -316,9 +316,9 @@ endif
 "Unite
 if HasPlugin('unite.vim')
   if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_command='ag'
+    let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+    let g:unite_source_grep_recursive_opt=''
   endif
   call unite#custom#profile('default', 'context', {
   \   'winheight' : paneHeight,
@@ -333,14 +333,14 @@ if HasPlugin('unite.vim')
     nnoremap <leader>uc :Unite colorscheme -start-insert<CR>
   endif
   if HasPlugin('vimfiler.vim')
-    let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_as_default_explorer=1
   endif
 endif
 
 "Indentation Rules
 if HasPlugin('vim-indent-guides')
-  let g:indent_guides_start_level = 1
-  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level=1
+  let g:indent_guides_guide_size=1
   nmap <leader>ig <Plug>IndentGuidesToggle
 endif
 
@@ -352,15 +352,16 @@ endif
 "Easymotion
 if HasPlugin('vim-easymotion')
   " Disabled default mappings
-  let g:EasyMotion_do_mapping = 0
-  let g:EasyMotion_keys = 'asdfjkl;ghewiovn'
+  let g:EasyMotion_do_mapping=0
+  let g:EasyMotion_keys='asdfjkl;ghewiovn'
   " Set easymotion movement
   nmap s <Plug>(easymotion-bd-w)
+  nmap S <Plug>(easymotion-overwin-w)
 endif
 
 "Sneak
 if HasPlugin('vim-sneak')
-  let g:sneak#streak = 1
+  let g:sneak#streak=1
   nmap s <Plug>(SneakStreak)
   nmap S <Plug>(SneakStreakBackward)
 endif
@@ -369,18 +370,18 @@ endif
 if HasPlugin('undotree')
   nnoremap <leader>u :UndotreeToggle<CR>:AirlineRefresh<CR>
   nnoremap <F5> :UndotreeToggle<CR>:AirlineRefresh<CR>
-  let g:undotree_SplitWidth = paneWidth
-  let g:undotree_SetFocusWhenToggle = 1
+  let g:undotree_SplitWidth=paneWidth
+  let g:undotree_SetFocusWhenToggle=1
 "Gundo
 elseif HasPlugin('gundo.vim')
   nnoremap <leader>u :GundoToggle<CR>
   nnoremap <F5> :GundoToggle<CR>
-  let g:gundo_width = paneWidth
+  let g:gundo_width=paneWidth
 endif
 
 "Conque
 if HasPlugin('conque-term')
-  let g:ConqueTerm_StartMessages = 0
+  let g:ConqueTerm_StartMessages=0
   function! OnConqueEnter(term)
     DisableWhitespace
   endfunction
