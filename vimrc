@@ -416,6 +416,7 @@ endfunction
 nnoremap <leader>z :call FoldToggle()<CR>
 
 "Buffers
+nnoremap <BS> <C-^>
 nnoremap <leader>t :enew!<CR>
 nnoremap <leader>k :bnext!<CR>
 nnoremap <leader>j :bprevious!<CR>
