@@ -247,6 +247,7 @@ endif
 if HasPlugin('vim-gutentags')
   call CreateDir(["guten"])
   let g:gutentags_cache_dir=expand(CreatePath(["guten"]))
+  let g:gutentags_project_root=['Makefile', 'makefile']
 endif
 
 "Tagbar
