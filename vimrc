@@ -166,7 +166,7 @@ AddPlugin 'majutsushi/tagbar'
 "Code completion with <TAB>
 "AddPlugin 'ajh17/VimCompletesMe'
 "AddPlugin 'maxboisvert/vim-simple-complete'
-"AddPlugin 'ervandew/supertab'
+AddPlugin 'ervandew/supertab'
 
 "Surround, makes {a,b,c} -> [a,b,c] easy, cs{[
 AddPlugin 'tpope/vim-surround'
@@ -242,6 +242,9 @@ let paneHeight=12
 if HasPlugin('VimCompletesMe')
   let b:vcm_tab_complete='tags'
   inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"Supertab
+elseif HasPlugin('supertab')
+  let g:SuperTabDefaultCompletionType="context"
 endif
 
 "Gutentags
