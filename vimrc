@@ -164,7 +164,8 @@ AddPlugin 'majutsushi/tagbar'
 AddPlugin 'ludovicchabant/vim-gutentags'
 
 "Code completion with <TAB>
-AddPlugin 'ajh17/VimCompletesMe'
+"AddPlugin 'ajh17/VimCompletesMe'
+AddPlugin 'maxboisvert/vim-simple-complete'
 "AddPlugin 'ervandew/supertab'
 
 "Surround, makes {a,b,c} -> [a,b,c] easy, cs{[
