@@ -244,7 +244,6 @@ if HasPlugin('VimCompletesMe')
   inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "Supertab
 elseif HasPlugin('supertab')
-  let g:SuperTabDefaultCompletionType="context"
 endif
 
 "Gutentags
